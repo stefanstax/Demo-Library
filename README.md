@@ -10,6 +10,31 @@
     "react-scripts": "5.0.1",
     "tailwindcss": "^3.3.2",
 
+### Components
+
+-   ✔ Container (main,secondary,size,margin,padding);
+-   [TBD] Button
+
+### Project Organisation
+
+-   Components
+    -   Card
+    -   CommentCreate
+    -   PostCreate
+    -   PostEdit
+    -   PostDelete
+    -   PostList
+    -   PostShow
+-   Context
+    -   library
+-   Hooks
+
+    -   use-library-context
+
+-   HTTP TEST FILES
+    -   comments.http
+    -   posts.http
+
 ### Information
 
 -   Run the project by simply running `npm start` and in another terminal window `npm run server`;
