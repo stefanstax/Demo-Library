@@ -13,7 +13,7 @@ const App = () => {
 
     return (
         // todo Make a Container component
-        <Container>
+        <Container main>
             <ArticleList />
         </Container>
     );
