@@ -1,0 +1,102 @@
+{
+  "posts": [
+    {
+      "id": 4,
+      "title": "New Dawn",
+      "comments": [
+        {
+          "id": 1,
+          "title": "This movie is awesome!"
+        }
+      ]
+    },
+    {
+      "id": 3437,
+      "title": "Testing new article creation"
+    },
+    {
+      "id": 3029,
+      "title": "What about now?"
+    },
+    {
+      "id": 5303,
+      "title": "What about now? 2021"
+    },
+    {
+      "id": 4754,
+      "title": "New stuff coming when I click on Create"
+    },
+    {
+      "id": 4332,
+      "title": "Testing anotehr one though the keyboard"
+    },
+    {
+      "id": 1311,
+      "title": "Potty Hotter: New Dawn"
+    },
+    {
+      "id": 4008,
+      "title": "Dark Age 2023"
+    },
+    {
+      "id": 6803,
+      "title": "Police Squadron "
+    },
+    {
+      "id": 9390,
+      "title": "Breaking Bad (2008-2013)"
+    }
+  ],
+  "comments": [
+    {
+      "id": 5,
+      "title": "What a great movie!",
+      "postId": 3
+    },
+    {
+      "id": 6803,
+      "title": "What a great movie!",
+      "postId": 3
+    },
+    {
+      "id": 1,
+      "title": "What a great movie!",
+      "postId": 6803
+    },
+    {
+      "id": 6804,
+      "title": "I watched this movie, it's pretty great!",
+      "postId": 4332
+    },
+    {
+      "id": 6805,
+      "title": "This article is pretty great yo!",
+      "postId": 3437
+    },
+    {
+      "id": 4764,
+      "title": "What a robocop knockout from 2008",
+      "postId": 6803
+    },
+    {
+      "id": 4134,
+      "title": "dawdawdawd",
+      "postId": 4008
+    },
+    {
+      "id": 6396,
+      "title": "I didn't enjoy this movie much, maybe you'll like it more..",
+      "postId": 4008
+    },
+    {
+      "id": 9314,
+      "title": "First episode is crazy! ",
+      "postId": 9390
+    },
+    {
+      "id": 1829,
+      "title": "Bro, whole season is insance!",
+      "postId": 9390
+    }
+  ]
+}
