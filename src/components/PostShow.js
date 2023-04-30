@@ -4,6 +4,7 @@ import PostDelete from './PostDelete';
 import PostEdit from './PostEdit';
 import { AiOutlineEdit, AiOutlineComment } from 'react-icons/ai';
 import CreateComment from './CommentCreate';
+import PostPhoto from './PostPhoto';
 
 const PostShow = ({ post, comments }) => {
     const [isEdit, setIsEdit] = useState(false);
@@ -15,18 +16,20 @@ const PostShow = ({ post, comments }) => {
 
     return (
         <Card book className="my-12">
+            <PostPhoto post={post} />
             {/* Post Delete */}
-            <PostDelete
-                post={post}
-                className="cursor-pointer hover:opacity-[0.6] transition-all"
-            />
+            <PostDelete post={post} />
             {/* Post Edit */}
             <AiOutlineEdit
-                className="cursor-pointer hover:opacity-[0.6] transition-all"
+                className={`cursor-pointer hover:opacity-[0.6] transition-all ${
+                    isEdit ? 'text-blue-600' : null
+                }`}
                 onClick={() => setIsEdit(!isEdit)}
             />
             <AiOutlineComment
-                className="cursor-pointer hover:opacity-[0.6] transition-all"
+                className={`cursor-pointer hover:opacity-[0.6] transition-all ${
+                    isComment ? 'text-blue-600' : null
+                }`}
                 onClick={() => setIsComment(!isComment)}
             />
             <span className="text-[12px] text-gray-700 w-fit rounded-full p-2 w-fit min-w-[50px] text-center">
