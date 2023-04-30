@@ -6,10 +6,10 @@ const PostCreate = () => {
     const [title, setTitle] = useState('');
     const [isCreate, setIsCreate] = useState(false);
 
-    const onSubmit = async (event) => {
+    const onSubmit = (event) => {
         event.preventDefault();
         setTitle('');
-        await axios.post('http://localhost:3001/posts', {
+        axios.post('http://localhost:3001/posts', {
             id: Math.round(Math.random() * 9999),
             title: title,
         });

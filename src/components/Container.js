@@ -1,13 +1,59 @@
 import { PropTypes } from 'prop-types';
 
-const Container = ({ children, size, padding, margin, main, secondary }) => {
+const Container = ({
+    children,
+    padding,
+    margin,
+    main,
+    secondary,
+    flex,
+    justify,
+    items,
+    wrap,
+    gap,
+}) => {
     return (
         <section
-            className={`w-full mx-auto ${size || 'max-w-[1024px]'} ${
+            className={`w-full ${flex ? 'flex' : 'block'} ${
+                justify === 'left'
+                    ? 'justify-left'
+                    : justify === 'center'
+                    ? 'justify-center'
+                    : justify === 'right'
+                    ? 'justify-right'
+                    : justify === 'stretch'
+                    ? 'justify-stretch'
+                    : justify === 'start'
+                    ? 'justify-start'
+                    : justify === 'end'
+                    ? 'justify-end'
+                    : justify === 'between'
+                    ? 'justify-between'
+                    : justify === 'around'
+                    ? 'justify-around'
+                    : justify === 'evenly'
+                    ? 'justify-evenly'
+                    : null
+            }
+                ${
+                    items === 'left'
+                        ? 'items-left'
+                        : items === 'center'
+                        ? 'items-center'
+                        : items === 'right'
+                        ? 'items-right'
+                        : items === 'stretch'
+                        ? 'items-stretch'
+                        : items === 'start'
+                        ? 'items-start'
+                        : items === 'end'
+                        ? 'items-end'
+                        : null
+                } ${wrap && 'flex-wrap'} ${gap ? `gap-${gap}` : null} mx-auto ${
                 padding || 'p-4'
-            } ${margin || 'my-12'} ${main && !size ? 'min-w-[1280px]' : null} ${
-                secondary && !size ? 'max-w-[1024px]' : null
-            }`}
+            } ${margin || 'my-12'} ${
+                main && !secondary ? 'min-w-[1280px]' : null
+            } ${secondary && !main ? 'max-w-[1024px]' : null}`}
         >
             {children}
         </section>
@@ -15,9 +61,13 @@ const Container = ({ children, size, padding, margin, main, secondary }) => {
 };
 
 Container.propTypes = {
-    size: PropTypes.string,
     margin: PropTypes.string,
     padding: PropTypes.string,
+    flex: PropTypes.string,
+    justify: PropTypes.string,
+    items: PropTypes.string,
+    wrap: PropTypes.string,
+    gap: PropTypes.number,
     checkContainerType: ({ main, secondary }) => {
         const containerType = Number(!!main) + Number(!!secondary);
         if (containerType > 1) {

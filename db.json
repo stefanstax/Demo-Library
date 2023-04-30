@@ -1,16 +1,6 @@
 {
   "posts": [
     {
-      "id": 4,
-      "title": "New Dawn",
-      "comments": [
-        {
-          "id": 1,
-          "title": "This movie is awesome!"
-        }
-      ]
-    },
-    {
       "id": 3437,
       "title": "Testing new article creation"
     },
@@ -23,16 +13,12 @@
       "title": "What about now? 2021"
     },
     {
-      "id": 4754,
-      "title": "New stuff coming when I click on Create"
-    },
-    {
       "id": 4332,
       "title": "Testing anotehr one though the keyboard"
     },
     {
       "id": 1311,
-      "title": "Potty Hotter: New Dawn"
+      "title": "Potty Hotter: New Dawn 2023"
     },
     {
       "id": 4008,
@@ -40,7 +26,7 @@
     },
     {
       "id": 6803,
-      "title": "Police Squadron "
+      "title": "Police Squadron Attack on Precinct 2k11"
     },
     {
       "id": 9390,
@@ -49,54 +35,14 @@
   ],
   "comments": [
     {
-      "id": 5,
-      "title": "What a great movie!",
-      "postId": 3
-    },
-    {
-      "id": 6803,
-      "title": "What a great movie!",
-      "postId": 3
-    },
-    {
       "id": 1,
       "title": "What a great movie!",
       "postId": 6803
     },
     {
-      "id": 6804,
-      "title": "I watched this movie, it's pretty great!",
-      "postId": 4332
-    },
-    {
-      "id": 6805,
-      "title": "This article is pretty great yo!",
-      "postId": 3437
-    },
-    {
-      "id": 4764,
-      "title": "What a robocop knockout from 2008",
-      "postId": 6803
-    },
-    {
-      "id": 4134,
-      "title": "dawdawdawd",
+      "id": 8839,
+      "title": "Dark age is definitely worth watching for sure! 9/10",
       "postId": 4008
-    },
-    {
-      "id": 6396,
-      "title": "I didn't enjoy this movie much, maybe you'll like it more..",
-      "postId": 4008
-    },
-    {
-      "id": 9314,
-      "title": "First episode is crazy! ",
-      "postId": 9390
-    },
-    {
-      "id": 1829,
-      "title": "Bro, whole season is insance!",
-      "postId": 9390
     }
   ]
 }

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { gatewayURL } from '../gateway';
+import _ from 'lodash';
 
 const PostEdit = ({ post }) => {
     let title = post?.title;
@@ -10,14 +11,17 @@ const PostEdit = ({ post }) => {
         setInput(event.target.value);
     };
 
-    const handleSubmit = async () => {
-        return await axios.patch(`${gatewayURL}/posts/${post?.id}`, {
+    const updatePost = () => {
+        return axios.patch(`${gatewayURL}/posts/${post?.id}`, {
             title: input,
         });
     };
+    // * Cache the result if same data is being sent
+    const memoizeUpdatePost = _.memoize(updatePost);
+
     return (
         <form
-            onSubmit={handleSubmit}
+            onSubmit={memoizeUpdatePost}
             className="flex justify-center items-center w-full"
         >
             <input
