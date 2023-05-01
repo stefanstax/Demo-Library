@@ -25,14 +25,14 @@ const PostEdit = ({ post }) => {
             className="flex justify-center items-center w-full"
         >
             <input
-                className="p-2 rounded-l-[10px] w-full"
+                className="w-full bg-transparent px-2 py-1 border font-black border-solid border-[1px] border-[#171717] border-r-[0px]"
                 type="text"
                 required
                 defaultValue={title}
                 onChange={handleChange}
             />
-            <button className="bg-green-500 text-white p-2 rounded-r-[10px]">
-                Save
+            <button className="text-[#171717] px-2 py-1 border border-solid border-[1px] border-[#171717] hover:bg-[#171717] hover:text-white transition-all">
+                Update
             </button>
         </form>
     );

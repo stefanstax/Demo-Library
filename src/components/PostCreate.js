@@ -20,10 +20,10 @@ const PostCreate = () => {
     };
 
     return (
-        <div className="flex justify-center items-center w-[30%] bg-slate-900 rounded-[10px] drop-shadow-2xl p-2 min-h-[200px]">
+        <div className="flex justify-center items-center w-[48%] md:w-[30%] bg-[#C7F86080] rounded-[7.5px] drop-shadow-2xl p-2 min-h-[200px]">
             {isCreate ? (
                 <div className="flex justify-center items-center flex-col gap-[10px] w-full">
-                    <h4 className="w-full text-2xl font-black text-white">
+                    <h4 className="w-full text-2xl font-black">
                         Create a new movie
                     </h4>
                     <form
@@ -31,14 +31,14 @@ const PostCreate = () => {
                         className="flex justify-center items-center flex-col gap-[10px] w-full"
                     >
                         <input
-                            className="p-2 rounded-[10px] w-full"
+                            className="p-2 w-full placeholder:text-sm placeholder:text-slate-600"
                             type="text"
                             required
                             placeholder="Movie name..."
                             defaultValue={title}
                             onChange={handleChange}
                         />
-                        <button className="w-full bg-green-500 text-white p-2 rounded-[10px]">
+                        <button className="w-full border-solid border-[1px] border-[#171717] p-2 hover:bg-[#171717] hover:text-white transition-all">
                             Add Movie
                         </button>
                     </form>
@@ -46,7 +46,6 @@ const PostCreate = () => {
             ) : (
                 <AiOutlinePlus
                     fontSize={40}
-                    color="white"
                     className="cursor-pointer"
                     onClick={() => setIsCreate(true)}
                 />
