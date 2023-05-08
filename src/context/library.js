@@ -18,11 +18,48 @@ const Provider = ({ children }) => {
         setComments(response.data);
     }, []);
 
+    const createPost = async (newTitle) => {
+        const response = await axios.post(`${gatewayURL}/posts`, {
+            id: Math.round(Math.random() * 9999),
+            title: newTitle,
+        });
+
+        const updatedPosts = [...posts, response.data];
+        setPosts(updatedPosts);
+    };
+
+    const editPost = async (id, newTitle) => {
+        const response = await axios.put(`${gatewayURL}/posts/${id}`, {
+            title: newTitle,
+        });
+
+        const updatedPosts = posts.map((post) => {
+            if (post.id === id) {
+                return { ...post, ...response.data };
+            }
+            return post;
+        });
+        setPosts(updatedPosts);
+    };
+
+    const deletePost = async (id) => {
+        await axios.delete(`${gatewayURL}/posts/${id}`);
+
+        const updatedPosts = posts.filter((post) => {
+            return post.id !== id;
+        });
+
+        setPosts(updatedPosts);
+    };
+
     const valueToShare = {
         posts,
         comments,
         fetchComments,
         fetchPosts,
+        createPost,
+        editPost,
+        deletePost,
     };
 
     return (

@@ -63,10 +63,10 @@ const Container = ({
 Container.propTypes = {
     margin: PropTypes.string,
     padding: PropTypes.string,
-    flex: PropTypes.string,
+    flex: PropTypes.bool,
     justify: PropTypes.string,
     items: PropTypes.string,
-    wrap: PropTypes.string,
+    wrap: PropTypes.bool,
     gap: PropTypes.number,
     checkContainerType: ({ main, secondary }) => {
         const containerType = Number(!!main) + Number(!!secondary);

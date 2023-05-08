@@ -1,15 +1,16 @@
-import axios from 'axios';
 import { AiOutlineDelete } from 'react-icons/ai';
-import { gatewayURL } from '../gateway';
+import useLibraryContext from '../hooks/use-library-context';
 
 const PostDelete = ({ post }) => {
-    const deletePost = () => {
-        return axios.delete(`${gatewayURL}/posts/${post?.id}`);
+    const { deletePost } = useLibraryContext();
+
+    const deletePostById = () => {
+        deletePost(post.id);
     };
     return (
         <span
             className="hover:text-red-700 cursor-pointer transition-all"
-            onClick={deletePost}
+            onClick={deletePostById}
         >
             {<AiOutlineDelete />}
         </span>

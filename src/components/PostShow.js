@@ -10,8 +10,16 @@ const PostShow = ({ post, comments }) => {
     const [isEdit, setIsEdit] = useState(false);
 
     const displayComments = comments.map((comment) => {
-        return <span className="w-full underline">{comment?.title}</span>;
+        return (
+            <span key={comment?.id} className="w-full underline">
+                {comment?.title}
+            </span>
+        );
     });
+
+    const disableSave = () => {
+        setIsEdit(false);
+    };
 
     return (
         <Card book className="my-12">
@@ -22,7 +30,7 @@ const PostShow = ({ post, comments }) => {
                 ID: {post.id}
             </span>
             {isEdit ? (
-                <PostEdit post={post} />
+                <PostEdit post={post} onSave={disableSave} />
             ) : (
                 <h4 className="text-[20px] font-black text-gray-800 flex justify-between items-center gap-[5px] w-full">
                     {post.title}{' '}

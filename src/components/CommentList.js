@@ -7,7 +7,10 @@ const CommentList = () => {
 
     const displayComments = comments.map((comment) => {
         return (
-            <span className="underline p-2 font-bold rounded-[5px] text-[12px] flex justify-center items-center gap-[10px]">
+            <span
+                key={comment?.id}
+                className="underline p-2 font-bold rounded-[5px] text-[12px] flex justify-center items-center gap-[10px]"
+            >
                 {comment.title} <CommentDelete comment={comment} />
             </span>
         );

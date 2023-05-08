@@ -1,27 +1,23 @@
-import axios from 'axios';
 import { useState } from 'react';
-import { gatewayURL } from '../gateway';
-import _ from 'lodash';
+import useLibraryContext from '../hooks/use-library-context';
 
-const PostEdit = ({ post }) => {
-    let title = post?.title;
-    const [input, setInput] = useState(title);
+const PostEdit = ({ post, onSave }) => {
+    const { editPost } = useLibraryContext();
+    const [title, setTitle] = useState(post.title);
 
     const handleChange = (event) => {
-        setInput(event.target.value);
+        setTitle(event.target.value);
     };
 
-    const updatePost = () => {
-        return axios.patch(`${gatewayURL}/posts/${post?.id}`, {
-            title: input,
-        });
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        editPost(post.id, title);
+        onSave();
     };
-    // * Cache the result if same data is being sent
-    const memoizeUpdatePost = _.memoize(updatePost);
 
     return (
         <form
-            onSubmit={memoizeUpdatePost}
+            onSubmit={handleSubmit}
             className="flex justify-center items-center w-full"
         >
             <input

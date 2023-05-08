@@ -1,18 +1,17 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { AiOutlinePlus } from 'react-icons/ai';
+import useLibraryContext from '../hooks/use-library-context';
 
 const PostCreate = () => {
+    const { createPost } = useLibraryContext();
     const [title, setTitle] = useState('');
     const [isCreate, setIsCreate] = useState(false);
 
     const onSubmit = (event) => {
         event.preventDefault();
+        createPost(title);
         setTitle('');
-        axios.post('http://localhost:3001/posts', {
-            id: Math.round(Math.random() * 9999),
-            title: title,
-        });
+        setIsCreate(false);
     };
 
     const handleChange = (event) => {
