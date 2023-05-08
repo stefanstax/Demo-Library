@@ -18,19 +18,42 @@ const Provider = ({ children }) => {
         setComments(response.data);
     }, []);
 
-    const createPost = async (newTitle) => {
+    const createComment = async (newTitle, postId) => {
+        const response = await axios.post(`${gatewayURL}/comments/`, {
+            id: Math.round(Math.random() * 9999),
+            title: newTitle,
+            postId: postId,
+        });
+
+        const updatedComments = [...comments, response.data];
+        setComments(updatedComments);
+    };
+
+    const deleteComment = async (id) => {
+        await axios.delete(`${gatewayURL}/comments/${id}`);
+
+        const updatedComments = comments.filter((comment) => {
+            return comment.id !== id;
+        });
+
+        setComments(updatedComments);
+    };
+
+    const createPost = async (newTitle, pickedCategory) => {
         const response = await axios.post(`${gatewayURL}/posts`, {
             id: Math.round(Math.random() * 9999),
             title: newTitle,
+            movieCategory: pickedCategory,
         });
 
         const updatedPosts = [...posts, response.data];
         setPosts(updatedPosts);
     };
 
-    const editPost = async (id, newTitle) => {
+    const editPost = async (id, newTitle, pickedCategory) => {
         const response = await axios.put(`${gatewayURL}/posts/${id}`, {
             title: newTitle,
+            movieCategory: pickedCategory,
         });
 
         const updatedPosts = posts.map((post) => {
@@ -60,6 +83,8 @@ const Provider = ({ children }) => {
         createPost,
         editPost,
         deletePost,
+        createComment,
+        deleteComment,
     };
 
     return (

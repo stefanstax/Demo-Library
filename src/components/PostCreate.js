@@ -1,21 +1,28 @@
 import { useState } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import useLibraryContext from '../hooks/use-library-context';
+import PostCategory from './PostCategory';
+import { categories } from '../context/categories';
 
 const PostCreate = () => {
     const { createPost } = useLibraryContext();
     const [title, setTitle] = useState('');
+    const [category, setCategory] = useState([]);
     const [isCreate, setIsCreate] = useState(false);
 
     const onSubmit = (event) => {
         event.preventDefault();
-        createPost(title);
+        createPost(title, category);
         setTitle('');
         setIsCreate(false);
     };
 
     const handleChange = (event) => {
         setTitle(event.target.value);
+    };
+
+    const handleCategory = (selectedCategory) => {
+        setCategory(selectedCategory);
     };
 
     return (
@@ -36,6 +43,10 @@ const PostCreate = () => {
                             placeholder="Movie name..."
                             defaultValue={title}
                             onChange={handleChange}
+                        />
+                        <PostCategory
+                            categories={categories}
+                            onSelect={handleCategory}
                         />
                         <button className="w-full border-solid border-[1px] border-[#171717] p-2 hover:bg-[#171717] hover:text-white transition-all">
                             Add Movie

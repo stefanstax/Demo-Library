@@ -1,17 +1,15 @@
-import axios from 'axios';
-import { gatewayURL } from '../gateway';
+import useLibraryContext from '../hooks/use-library-context';
 import { useState } from 'react';
 
 const CreateComment = ({ post }) => {
     const [title, setTitle] = useState('');
+    const { createComment } = useLibraryContext();
+    let postId = post?.id;
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.post(`${gatewayURL}/comments`, {
-            id: Math.round(Math.random() * 9999),
-            title: title,
-            postId: post?.id,
-        });
+        setTitle('');
+        createComment(title, postId);
     };
 
     const handleChange = (event) => {

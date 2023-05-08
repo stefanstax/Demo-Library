@@ -1,56 +1,90 @@
 {
   "posts": [
     {
-      "id": 974,
-      "title": "Ameria: New Purge"
+      "title": "Ameria: New Purge",
+      "movieCategory": "thriller",
+      "id": 974
     },
     {
-      "id": 692,
-      "title": "Belgium"
+      "title": "Belgium",
+      "movieCategory": "comedy",
+      "id": 692
     },
     {
-      "id": 7410,
-      "title": "France"
+      "title": "France",
+      "movieCategory": "thriller",
+      "id": 7410
     },
     {
-      "id": 5464,
-      "title": "United Stated of America"
+      "title": "United Stated of America",
+      "movieCategory": "horror",
+      "id": 5464
     },
     {
       "title": "Mandalorian New Dawn 2019",
+      "movieCategory": "sci-fi",
       "id": 847
     },
     {
       "title": "NYC | The Beginning 2021",
+      "movieCategory": "action",
       "id": 647
     },
     {
-      "id": 1154,
-      "title": "The Blacklist ( 2014 - )"
+      "title": "The Blacklist ( 2014 - )",
+      "movieCategory": "comedy",
+      "id": 1154
     },
     {
-      "id": 6838,
-      "title": "Roman Empire "
+      "title": "Roman Empire The Awakening",
+      "movieCategory": "sci-fi",
+      "id": 6838
     },
     {
       "title": "SQPR - Chronicles Part III",
+      "movieCategory": "horror",
       "id": 8622
+    },
+    {
+      "title": "Parish Live",
+      "movieCategory": "action",
+      "id": 9289
+    },
+    {
+      "title": "Movie with a category of Action",
+      "movieCategory": "action",
+      "id": 1522
+    },
+    {
+      "title": "Knives Out Part II",
+      "movieCategory": "action",
+      "id": 5202
+    },
+    {
+      "id": 6286,
+      "title": "What a name for a movie!",
+      "movieCategory": "thriller"
+    },
+    {
+      "title": "You People 2023",
+      "movieCategory": "comedy",
+      "id": 6797
+    },
+    {
+      "title": "B.o.B Hayley Williams: Airplanes Music",
+      "movieCategory": "thriller",
+      "id": 8427
     }
   ],
   "comments": [
     {
-      "id": 5040,
-      "title": "Random comment",
-      "postId": 847
-    },
-    {
-      "id": 5859,
-      "title": "Random movie",
+      "id": 4514,
+      "title": "I watched all 7 seasons, an absolute beast!",
       "postId": 1154
     },
     {
-      "id": 2199,
-      "title": "Random comment on a movie",
+      "id": 5023,
+      "title": "There is season 8 coming soon as well, can't wait!",
       "postId": 1154
     }
   ]
