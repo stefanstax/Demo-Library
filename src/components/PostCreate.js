@@ -26,7 +26,10 @@ const PostCreate = () => {
     };
 
     return (
-        <div className="flex justify-center items-center w-[48%] md:w-[30%] bg-[#C7F86080] rounded-[7.5px] drop-shadow-2xl p-2 min-h-[200px]">
+        <div
+            className="flex justify-center items-center w-[48%] md:w-[32%] bg-[#C7F86080] hover:bg-[#C7F860] transition-all rounded-[7.5px] drop-shadow-2xl p-2 min-h-[200px] cursor-pointer"
+            onClick={() => setIsCreate(true)}
+        >
             {isCreate ? (
                 <div className="flex justify-center items-center flex-col gap-[10px] w-full">
                     <h4 className="w-full text-2xl font-black">
@@ -54,11 +57,7 @@ const PostCreate = () => {
                     </form>
                 </div>
             ) : (
-                <AiOutlinePlus
-                    fontSize={40}
-                    className="cursor-pointer"
-                    onClick={() => setIsCreate(true)}
-                />
+                <AiOutlinePlus fontSize={40} />
             )}
         </div>
     );

@@ -4,10 +4,11 @@ import PostCategory from './PostCategory';
 import { categories } from '../context/categories';
 
 const PostEdit = ({ post, onSave }) => {
+    console.log('All post params:', post);
     const { editPost } = useLibraryContext();
     const [title, setTitle] = useState(post.title);
 
-    const [category, setCategory] = useState([]);
+    const [category, setCategory] = useState(post?.genre);
 
     const handleChange = (event) => {
         setTitle(event.target.value);
@@ -19,8 +20,9 @@ const PostEdit = ({ post, onSave }) => {
         onSave();
     };
 
-    const handleCategory = (event) => {
-        setCategory(event);
+    // todo Check - not reading well - works on second trigger of the select
+    const handleCategory = (value) => {
+        setCategory(value);
     };
 
     return (
@@ -38,7 +40,7 @@ const PostEdit = ({ post, onSave }) => {
             <PostCategory
                 categories={categories}
                 onSelect={handleCategory}
-                postCategory={post?.movieCategory}
+                postCategory={category}
             />
             <button className="text-[#171717] w-full px-2 py-1 border border-solid border-[1px] border-[#171717] hover:bg-[#171717] hover:text-white transition-all">
                 Update

@@ -43,7 +43,7 @@ const Provider = ({ children }) => {
         const response = await axios.post(`${gatewayURL}/posts`, {
             id: Math.round(Math.random() * 9999),
             title: newTitle,
-            movieCategory: pickedCategory,
+            genre: pickedCategory,
         });
 
         const updatedPosts = [...posts, response.data];
@@ -53,7 +53,7 @@ const Provider = ({ children }) => {
     const editPost = async (id, newTitle, pickedCategory) => {
         const response = await axios.put(`${gatewayURL}/posts/${id}`, {
             title: newTitle,
-            movieCategory: pickedCategory,
+            genre: pickedCategory,
         });
 
         const updatedPosts = posts.map((post) => {

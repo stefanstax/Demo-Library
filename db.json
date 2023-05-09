@@ -2,78 +2,88 @@
   "posts": [
     {
       "title": "Ameria: New Purge",
-      "movieCategory": "thriller",
+      "genre": "thriller",
       "id": 974
     },
     {
-      "title": "Belgium",
-      "movieCategory": "comedy",
-      "id": 692
-    },
-    {
       "title": "France",
-      "movieCategory": "thriller",
+      "genre": "comedy",
       "id": 7410
     },
     {
       "title": "United Stated of America",
-      "movieCategory": "horror",
+      "genre": "sci-fi",
       "id": 5464
     },
     {
       "title": "Mandalorian New Dawn 2019",
-      "movieCategory": "sci-fi",
+      "genre": "sci-fi",
       "id": 847
     },
     {
-      "title": "NYC | The Beginning 2021",
-      "movieCategory": "action",
+      "title": "NYC | The Beginning 2022",
+      "genre": "comedy",
       "id": 647
     },
     {
       "title": "The Blacklist ( 2014 - )",
-      "movieCategory": "comedy",
+      "genre": "comedy",
       "id": 1154
     },
     {
       "title": "Roman Empire The Awakening",
-      "movieCategory": "sci-fi",
+      "genre": "sci-fi",
       "id": 6838
     },
     {
       "title": "SQPR - Chronicles Part III",
-      "movieCategory": "horror",
+      "genre": "horror",
       "id": 8622
     },
     {
       "title": "Parish Live",
-      "movieCategory": "action",
+      "genre": "action",
       "id": 9289
     },
     {
       "title": "Movie with a category of Action",
-      "movieCategory": "action",
+      "genre": "action",
       "id": 1522
     },
     {
-      "title": "Knives Out Part II",
-      "movieCategory": "action",
+      "title": "Knives Out Part III",
+      "genre": "thriller",
       "id": 5202
     },
     {
-      "id": 6286,
       "title": "What a name for a movie!",
-      "movieCategory": "thriller"
+      "genre": "comedy",
+      "id": 6286
     },
     {
       "title": "You People 2023",
-      "movieCategory": "comedy",
+      "genre": "comedy",
       "id": 6797
     },
     {
-      "title": "B.o.B Hayley Williams: Airplanes Music",
-      "movieCategory": "thriller",
-      "id": 8427
+      "id": 2934,
+      "title": "Die Hard",
+      "genre": "thriller"
+    },
+    {
+      "id": 5998,
+      "title": "Purge - New Era",
+      "genre": "action"
+    },
+    {
+      "id": 2744,
+      "title": "Purge - New Era Part II",
+      "genre": "action"
+    },
+    {
+      "id": 9080,
+      "title": "Purge - New Era Part III",
+      "genre": "horror"
     }
   ],
   "comments": [
@@ -86,6 +96,46 @@
       "id": 5023,
       "title": "There is season 8 coming soon as well, can't wait!",
       "postId": 1154
+    },
+    {
+      "id": 2295,
+      "title": "Fucked up movie man",
+      "postId": 5202
+    },
+    {
+      "id": 5616,
+      "title": "I would rate it 4/10",
+      "postId": 5202
+    },
+    {
+      "id": 3574,
+      "title": "In 2023 Season 11 is coming out!",
+      "postId": 1154
+    },
+    {
+      "id": 7118,
+      "title": "Way better than the first one for real",
+      "postId": 2744
+    },
+    {
+      "id": 9836,
+      "title": "Actors are jank honestly",
+      "postId": 5998
+    },
+    {
+      "id": 515,
+      "title": "You can see every scene that was done in the studio :D",
+      "postId": 5998
+    },
+    {
+      "id": 2669,
+      "title": "Horrible movie",
+      "postId": 5998
+    },
+    {
+      "id": 2691,
+      "title": "Poor performance and production",
+      "postId": 5998
     }
   ]
 }

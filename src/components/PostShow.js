@@ -8,7 +8,6 @@ import PostPhoto from './PostPhoto';
 
 const PostShow = ({ post, comments }) => {
     const [isEdit, setIsEdit] = useState(false);
-    const [isCategoryUpdate, setIsCategoryUpdate] = useState(false);
 
     const displayComments = comments.map((comment) => {
         return (
@@ -26,30 +25,32 @@ const PostShow = ({ post, comments }) => {
         <Card book className="my-12">
             <PostPhoto post={post} />
             {/* Post Delete */}
-            <PostDelete post={post} />
-            <span className="text-[12px] text-gray-700 w-fit rounded-full p-2 w-fit min-w-[50px] text-center">
-                ID: {post.id}
-            </span>
             <div className="w-full">
-                <span className="w-fit text-[12px] bg-[#171717] px-2 py-1 rounded-[5px] text-[#C7F860] uppercase">
-                    {post?.movieCategory}
-                </span>
+                <div className="w-full flex gap-[10px] justify-start items-center">
+                    <PostDelete post={post} />
+                    <span className="text-[12px] text-gray-700 w-fit rounded-full p-2 w-fit min-w-[50px] text-center">
+                        ID: {post.id}
+                    </span>
+                    <span className="w-fit text-[12px] bg-[#171717] px-2 py-1 rounded-[5px] text-[#C7F860] uppercase">
+                        {post?.genre}
+                    </span>
+                </div>
+                {isEdit ? (
+                    <PostEdit post={post} onSave={disableSave} />
+                ) : (
+                    <h4 className="text-[20px] font-black text-gray-800 flex justify-between items-center gap-[5px] w-full">
+                        {post.title}{' '}
+                        <AiOutlineEdit
+                            className={`cursor-pointer hover:opacity-[0.6] transition-all w-fit ${
+                                isEdit ? 'text-blue-600' : null
+                            }`}
+                            onClick={() => setIsEdit(!isEdit)}
+                        />
+                    </h4>
+                )}
             </div>
-            {isEdit ? (
-                <PostEdit post={post} onSave={disableSave} />
-            ) : (
-                <h4 className="text-[20px] font-black text-gray-800 flex justify-between items-center gap-[5px] w-full">
-                    {post.title}{' '}
-                    <AiOutlineEdit
-                        className={`cursor-pointer hover:opacity-[0.6] transition-all w-fit ${
-                            isEdit ? 'text-blue-600' : null
-                        }`}
-                        onClick={() => setIsEdit(!isEdit)}
-                    />
-                </h4>
-            )}
             {/* Comments */}
-            <div className="w-full flex flex-wrap justify-start items-center gap-[5px]">
+            <div className="w-full flex flex-wrap justify-start items-center gap-[5px] mt-8">
                 <h5 className="w-full font-bold">Comments</h5>
                 <span className="text-[10px]">
                     {displayComments?.length}{' '}
