@@ -26,6 +26,7 @@ const PostList = () => {
             items={'stretch'}
             wrap
             gap={'[10px]'}
+            className="mt-28"
         >
             {displayPosts}
             <PostCreate />

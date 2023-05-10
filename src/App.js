@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import ArticleList from './components/PostList';
 import useLibraryContext from './hooks/use-library-context';
 import Container from './components/Container';
+import Route from './components/Route';
+import Menu from './components/Menu';
 
 const App = () => {
     const { fetchPosts, fetchComments } = useLibraryContext();
@@ -14,7 +16,10 @@ const App = () => {
     return (
         // todo Make a Container component
         <Container main>
-            <ArticleList />
+            <Menu />
+            <Route path="/">
+                <ArticleList />
+            </Route>
         </Container>
     );
 };

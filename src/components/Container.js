@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { PropTypes } from 'prop-types';
 
 const Container = ({
@@ -11,53 +12,52 @@ const Container = ({
     items,
     wrap,
     gap,
+    className,
 }) => {
-    return (
-        <section
-            className={`w-full ${flex ? 'flex' : 'block'} ${
-                justify === 'left'
-                    ? 'justify-left'
-                    : justify === 'center'
-                    ? 'justify-center'
-                    : justify === 'right'
-                    ? 'justify-right'
-                    : justify === 'stretch'
-                    ? 'justify-stretch'
-                    : justify === 'start'
-                    ? 'justify-start'
-                    : justify === 'end'
-                    ? 'justify-end'
-                    : justify === 'between'
-                    ? 'justify-between'
-                    : justify === 'around'
-                    ? 'justify-around'
-                    : justify === 'evenly'
-                    ? 'justify-evenly'
-                    : null
-            }
-                ${
-                    items === 'left'
-                        ? 'items-left'
-                        : items === 'center'
-                        ? 'items-center'
-                        : items === 'right'
-                        ? 'items-right'
-                        : items === 'stretch'
-                        ? 'items-stretch'
-                        : items === 'start'
-                        ? 'items-start'
-                        : items === 'end'
-                        ? 'items-end'
-                        : null
-                } ${wrap && 'flex-wrap'} ${gap ? `gap-${gap}` : null} mx-auto ${
-                padding || 'p-4'
-            } ${margin || 'my-12'} ${
-                main && !secondary ? 'min-w-[1280px]' : null
-            } ${secondary && !main ? 'max-w-[1024px]' : null}`}
-        >
-            {children}
-        </section>
+    const classes = classNames(
+        `w-full ${flex ? 'flex' : 'block'} ${
+            justify === 'left'
+                ? 'justify-left'
+                : justify === 'center'
+                ? 'justify-center'
+                : justify === 'right'
+                ? 'justify-right'
+                : justify === 'stretch'
+                ? 'justify-stretch'
+                : justify === 'start'
+                ? 'justify-start'
+                : justify === 'end'
+                ? 'justify-end'
+                : justify === 'between'
+                ? 'justify-between'
+                : justify === 'around'
+                ? 'justify-around'
+                : justify === 'evenly'
+                ? 'justify-evenly'
+                : null
+        }
+        ${
+            items === 'left'
+                ? 'items-left'
+                : items === 'center'
+                ? 'items-center'
+                : items === 'right'
+                ? 'items-right'
+                : items === 'stretch'
+                ? 'items-stretch'
+                : items === 'start'
+                ? 'items-start'
+                : items === 'end'
+                ? 'items-end'
+                : null
+        } ${wrap && 'flex-wrap'} ${
+            gap ? `gap-${gap}` : null
+        } mx-auto ${padding} ${margin} ${
+            main && !secondary ? 'min-w-full xl:min-w-[1280px]' : null
+        } ${secondary && !main ? 'max-w-[1024px]' : null}`,
+        className
     );
+    return <section className={classes}>{children}</section>;
 };
 
 Container.propTypes = {

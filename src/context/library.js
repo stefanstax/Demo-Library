@@ -4,7 +4,7 @@ import { gatewayURL } from '../gateway';
 
 const LibraryContext = createContext();
 
-const Provider = ({ children }) => {
+const LibraryProvider = ({ children }) => {
     const [posts, setPosts] = useState([]);
     const [comments, setComments] = useState([]);
 
@@ -94,5 +94,5 @@ const Provider = ({ children }) => {
     );
 };
 
-export { Provider };
+export { LibraryProvider };
 export default LibraryContext;
