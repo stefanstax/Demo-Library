@@ -4,4 +4,5 @@ export const paths = [
     { label: 'Movies', value: '/movies' },
     { label: 'Series', value: '/series' },
     { label: 'Podcasts', value: '/podcasts' },
+    { label: 'Members', value: '/members' },
 ];

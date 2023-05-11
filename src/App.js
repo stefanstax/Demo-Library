@@ -4,6 +4,7 @@ import useLibraryContext from './hooks/use-library-context';
 import Container from './components/Container';
 import Route from './components/Route';
 import Menu from './components/Menu';
+import MembersPage from './pages/MembersPage';
 
 const App = () => {
     const { fetchPosts, fetchComments } = useLibraryContext();
@@ -19,6 +20,9 @@ const App = () => {
             <Menu />
             <Route path="/">
                 <ArticleList />
+            </Route>
+            <Route path="/members">
+                <MembersPage />
             </Route>
         </Container>
     );

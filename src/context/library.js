@@ -7,6 +7,7 @@ const LibraryContext = createContext();
 const LibraryProvider = ({ children }) => {
     const [posts, setPosts] = useState([]);
     const [comments, setComments] = useState([]);
+    const [members, setMembers] = useState([]);
 
     const fetchPosts = useCallback(async () => {
         const response = await axios.get(`${gatewayURL}/posts`);
@@ -17,6 +18,11 @@ const LibraryProvider = ({ children }) => {
         const response = await axios.get(`${gatewayURL}/comments`);
         setComments(response.data);
     }, []);
+
+    const fetchMembers = useCallback(async () => {
+        const response = await axios.get(`${gatewayURL}/members`);
+        setMembers(response.data);
+    });
 
     const createComment = async (newTitle, postId) => {
         const response = await axios.post(`${gatewayURL}/comments/`, {
@@ -75,6 +81,12 @@ const LibraryProvider = ({ children }) => {
         setPosts(updatedPosts);
     };
 
+    // ! Redirect Auth url back to homepage
+    // todo Find a better way to mask this url and redirection
+    if (window.location.pathname.includes('authentication')) {
+        return (window.location.pathname = '/');
+    }
+
     const valueToShare = {
         posts,
         comments,
@@ -85,6 +97,8 @@ const LibraryProvider = ({ children }) => {
         deletePost,
         createComment,
         deleteComment,
+        fetchMembers,
+        members,
     };
 
     return (

@@ -1,4 +1,17 @@
 {
+  "authentication": [
+    {
+    "id": 1,
+    "username": "stefanstax",
+    "password": "Qwerty12345"
+  }],
+  "members": [
+    {
+      "firstName": "Stefan",
+      "lastName": "Stax",
+      "username": "stefanstax"
+    }
+  ],
   "posts": [
     {
       "title": "Ameria: New Purge",
@@ -86,9 +99,9 @@
       "genre": "horror"
     },
     {
-      "id": 1162,
-      "title": "Navigation Context Added",
-      "genre": "thriller"
+      "title": "Navigation Context Added Part II",
+      "genre": "action",
+      "id": 1162
     }
   ],
   "comments": [
