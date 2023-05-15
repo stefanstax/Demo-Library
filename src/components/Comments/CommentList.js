@@ -1,5 +1,5 @@
 import React from 'react';
-import useLibraryContext from '../hooks/use-library-context';
+import useLibraryContext from '../../hooks/use-library-context';
 import CommentDelete from './CommentDelete';
 
 const CommentList = () => {

@@ -1,5 +1,5 @@
 import { AiOutlineDelete } from 'react-icons/ai';
-import useLibraryContext from '../hooks/use-library-context';
+import useLibraryContext from '../../hooks/use-library-context';
 
 const CommentDelete = ({ comment }) => {
     const { deleteComment } = useLibraryContext();

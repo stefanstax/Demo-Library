@@ -1,0 +1,4 @@
+- Upon submitting comment clear field;
+- When changing record type clear title field;
+- Upon creation close previously selected record type;
+- 

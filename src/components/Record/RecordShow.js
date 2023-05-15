@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Card from './Card';
-import PostDelete from './PostDelete';
-import PostEdit from './PostEdit';
+import Card from '../Card';
+import PostDelete from './RecordDelete';
+import PostEdit from './RecordEdit';
+import PostPhoto from './RecordPhoto';
+import CreateComment from '../Comments/CommentCreate';
 import { AiOutlineEdit } from 'react-icons/ai';
-import CreateComment from './CommentCreate';
-import PostPhoto from './PostPhoto';
 
 const PostShow = ({ post, comments }) => {
     const [isEdit, setIsEdit] = useState(false);

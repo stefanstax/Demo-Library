@@ -1,4 +1,4 @@
-import useLibraryContext from '../hooks/use-library-context';
+import useLibraryContext from '../../hooks/use-library-context';
 import { useState } from 'react';
 
 const CreateComment = ({ post }) => {

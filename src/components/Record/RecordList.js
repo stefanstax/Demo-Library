@@ -1,9 +1,9 @@
 import React from 'react';
-import useLibraryContext from '../hooks/use-library-context';
-import PostShow from './PostShow';
-import PostCreate from './PostCreate';
-import CommentList from './CommentList';
-import Container from './Container';
+import useLibraryContext from '../../hooks/use-library-context';
+import PostShow from './RecordShow';
+import PostCreate from './RecordCreate';
+import CommentList from '../Comments/CommentList';
+import Container from '../Container';
 
 const PostList = () => {
     const { posts, comments } = useLibraryContext();
@@ -12,6 +12,7 @@ const PostList = () => {
         const filteredComments = comments.filter(
             (comment) => comment.postId === post.id
         );
+
         return (
             <PostShow post={post} comments={filteredComments} key={post.id} />
         );

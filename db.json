@@ -1,10 +1,11 @@
 {
   "authentication": [
     {
-    "id": 1,
-    "username": "stefanstax",
-    "password": "Qwerty12345"
-  }],
+      "id": 1,
+      "username": "stefanstax",
+      "password": "Qwerty12345"
+    }
+  ],
   "members": [
     {
       "firstName": "Stefan",
@@ -14,146 +15,49 @@
   ],
   "posts": [
     {
-      "title": "Ameria: New Purge",
-      "genre": "thriller",
-      "id": 974
-    },
-    {
-      "title": "France",
-      "genre": "comedy",
-      "id": 7410
-    },
-    {
-      "title": "United Stated of America",
-      "genre": "sci-fi",
-      "id": 5464
-    },
-    {
-      "title": "Mandalorian New Dawn 2019",
-      "genre": "action",
-      "id": 847
-    },
-    {
-      "title": "NYC | The Beginning 2022",
-      "genre": "comedy",
-      "id": 647
-    },
-    {
-      "title": "The Blacklist ( 2014 - )",
-      "genre": "comedy",
-      "id": 1154
-    },
-    {
-      "title": "Roman Empire The Awakening",
-      "genre": "sci-fi",
-      "id": 6838
-    },
-    {
-      "title": "SQPR - Chronicles Part III",
+      "id": 3640,
+      "title": "Purge - The Beginning 2019",
       "genre": "horror",
-      "id": 8622
+      "recordType": "movie"
     },
     {
-      "title": "Parish Live",
-      "genre": "action",
-      "id": 9289
+      "id": 8741,
+      "title": "Selena Gomez - Kill'em with kindness",
+      "genre": "pop-folk",
+      "recordType": "song"
     },
     {
-      "title": "Movie with a category of Action",
-      "genre": "action",
-      "id": 1522
-    },
-    {
-      "title": "Knives Out Part III",
-      "genre": "thriller",
-      "id": 5202
-    },
-    {
-      "title": "What a name for a movie!",
-      "genre": "comedy",
-      "id": 6286
-    },
-    {
-      "title": "You People 2023",
-      "genre": "comedy",
-      "id": 6797
-    },
-    {
-      "id": 2934,
-      "title": "Die Hard",
-      "genre": "thriller"
-    },
-    {
-      "id": 5998,
-      "title": "Purge - New Era",
-      "genre": "action"
-    },
-    {
-      "title": "Purge - New Era Part II",
+      "id": 7875,
+      "title": "Purge - Pact II",
       "genre": "horror",
-      "id": 2744
-    },
-    {
-      "id": 9080,
-      "title": "Purge - New Era Part III",
-      "genre": "horror"
-    },
-    {
-      "title": "Navigation Context Added Part II",
-      "genre": "action",
-      "id": 1162
+      "recordType": "movie"
     }
   ],
   "comments": [
     {
-      "id": 4514,
-      "title": "I watched all 7 seasons, an absolute beast!",
-      "postId": 1154
+      "id": 1034,
+      "title": "What a movie yoo!",
+      "postId": 7875
     },
     {
-      "id": 5023,
-      "title": "There is season 8 coming soon as well, can't wait!",
-      "postId": 1154
+      "id": 2767,
+      "title": "Meh, not very exciting to be fair",
+      "postId": 3640
     },
     {
-      "id": 2295,
-      "title": "Fucked up movie man",
-      "postId": 5202
+      "id": 3421,
+      "title": "Judging what a crap first part was, this one nails!",
+      "postId": 7875
     },
     {
-      "id": 5616,
-      "title": "I would rate it 4/10",
-      "postId": 5202
+      "id": 1602,
+      "title": "I would give me 8/10",
+      "postId": 7875
     },
     {
-      "id": 3574,
-      "title": "In 2023 Season 11 is coming out!",
-      "postId": 1154
-    },
-    {
-      "id": 7118,
-      "title": "Way better than the first one for real",
-      "postId": 2744
-    },
-    {
-      "id": 9836,
-      "title": "Actors are jank honestly",
-      "postId": 5998
-    },
-    {
-      "id": 515,
-      "title": "You can see every scene that was done in the studio :D",
-      "postId": 5998
-    },
-    {
-      "id": 2669,
-      "title": "Horrible movie",
-      "postId": 5998
-    },
-    {
-      "id": 2691,
-      "title": "Poor performance and production",
-      "postId": 5998
+      "id": 7220,
+      "title": "I've started singing this while driving every day :D",
+      "postId": 8741
     }
   ]
 }

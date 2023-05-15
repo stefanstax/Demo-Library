@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import useLibraryContext from '../hooks/use-library-context';
+import useLibraryContext from '../../hooks/use-library-context';
 import PostCategory from './PostCategory';
-import { categories } from '../context/categories';
+import { categories } from '../../context/categories';
+import { genres } from '../../context/genres';
 
 const PostEdit = ({ post, onSave }) => {
-    console.log('All post params:', post);
     const { editPost } = useLibraryContext();
     const [title, setTitle] = useState(post.title);
 
     const [category, setCategory] = useState(post?.genre);
+    const [recordType, setRecordType] = useState(post?.recordType);
 
     const handleChange = (event) => {
         setTitle(event.target.value);
@@ -16,7 +17,7 @@ const PostEdit = ({ post, onSave }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        editPost(post.id, title, category);
+        editPost(post.id, title, category, recordType);
         onSave();
     };
 
@@ -37,11 +38,21 @@ const PostEdit = ({ post, onSave }) => {
                 defaultValue={title}
                 onChange={handleChange}
             />
-            <PostCategory
-                categories={categories}
-                onSelect={handleCategory}
-                postCategory={category}
-            />
+            {/* // TODO FIND A BETTER WAY - REPETETIVE */}
+            {post?.recordType === 'song' && (
+                <PostCategory
+                    genres={genres}
+                    onSelect={handleCategory}
+                    postCategory={category}
+                />
+            )}
+            {post?.recordType === 'movie' && (
+                <PostCategory
+                    categories={categories}
+                    onSelect={handleCategory}
+                    postCategory={category}
+                />
+            )}
             <button className="text-[#171717] w-full px-2 py-1 border border-solid border-[1px] border-[#171717] hover:bg-[#171717] hover:text-white transition-all">
                 Update
             </button>

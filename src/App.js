@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import ArticleList from './components/PostList';
+import ArticleList from './components/Record/RecordList';
 import useLibraryContext from './hooks/use-library-context';
 import Container from './components/Container';
 import Route from './components/Route';
 import Menu from './components/Menu';
 import MembersPage from './pages/MembersPage';
+import MoviesPage from './pages/MoviesPage';
 
 const App = () => {
     const { fetchPosts, fetchComments } = useLibraryContext();
@@ -23,6 +24,9 @@ const App = () => {
             </Route>
             <Route path="/members">
                 <MembersPage />
+            </Route>
+            <Route path="/movies">
+                <MoviesPage />
             </Route>
         </Container>
     );

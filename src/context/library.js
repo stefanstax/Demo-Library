@@ -45,21 +45,23 @@ const LibraryProvider = ({ children }) => {
         setComments(updatedComments);
     };
 
-    const createPost = async (newTitle, pickedCategory) => {
+    const createPost = async (newTitle, pickedCategory, pickedRecord) => {
         const response = await axios.post(`${gatewayURL}/posts`, {
             id: Math.round(Math.random() * 9999),
             title: newTitle,
             genre: pickedCategory,
+            recordType: pickedRecord,
         });
 
         const updatedPosts = [...posts, response.data];
         setPosts(updatedPosts);
     };
 
-    const editPost = async (id, newTitle, pickedCategory) => {
+    const editPost = async (id, newTitle, pickedCategory, pickedRecord) => {
         const response = await axios.put(`${gatewayURL}/posts/${id}`, {
             title: newTitle,
             genre: pickedCategory,
+            recordType: pickedRecord,
         });
 
         const updatedPosts = posts.map((post) => {
