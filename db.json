@@ -15,49 +15,58 @@
   ],
   "posts": [
     {
-      "id": 3640,
-      "title": "Purge - The Beginning 2019",
-      "genre": "horror",
-      "recordType": "movie"
+      "title": "Euphoria",
+      "genre": "funk",
+      "recordType": "song",
+      "author": "Loreen",
+      "id": 1971
     },
     {
-      "id": 8741,
-      "title": "Selena Gomez - Kill'em with kindness",
+      "id": 3220,
+      "title": "Tattoo",
+      "genre": "funk",
+      "recordType": "song",
+      "author": "Loreen"
+    },
+    {
+      "id": 1605,
+      "title": "Kill'em with kindness",
       "genre": "pop-folk",
-      "recordType": "song"
+      "recordType": "song",
+      "author": "Selena Gomez"
     },
     {
-      "id": 7875,
-      "title": "Purge - Pact II",
-      "genre": "horror",
-      "recordType": "movie"
+      "id": 1772,
+      "title": "Ocean Away",
+      "genre": "funk",
+      "recordType": "song",
+      "author": "Loreen"
+    },
+    {
+      "title": "Assassin's Creed Valhalla Main Soundtrack",
+      "genre": "soundtrack",
+      "recordType": "song",
+      "author": "Sarah Schachner",
+      "id": 6039
+    },
+    {
+      "id": 5814,
+      "title": "Sarah Schachner",
+      "genre": "soundtrack",
+      "recordType": "song",
+      "author": "Modern Warfare II"
     }
   ],
   "comments": [
     {
-      "id": 1034,
-      "title": "What a movie yoo!",
-      "postId": 7875
+      "id": 8592,
+      "title": "Jesus! What a soundtrack yoo",
+      "postId": 5814
     },
     {
-      "id": 2767,
-      "title": "Meh, not very exciting to be fair",
-      "postId": 3640
-    },
-    {
-      "id": 3421,
-      "title": "Judging what a crap first part was, this one nails!",
-      "postId": 7875
-    },
-    {
-      "id": 1602,
-      "title": "I would give me 8/10",
-      "postId": 7875
-    },
-    {
-      "id": 7220,
-      "title": "I've started singing this while driving every day :D",
-      "postId": 8741
+      "id": 1732,
+      "title": "Once again, totally nailed it. Well done @Sarah",
+      "postId": 6039
     }
   ]
 }

@@ -9,7 +9,7 @@ const PostDelete = ({ post }) => {
     };
     return (
         <span
-            className="hover:text-red-700 cursor-pointer transition-all"
+            className="hover:text-red-700 cursor-pointer transition-all text-[20px]"
             onClick={deletePostById}
         >
             {<AiOutlineDelete />}

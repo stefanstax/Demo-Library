@@ -6,6 +6,7 @@ export const genres = [
     { label: 'Country', value: 'country' },
     { label: 'Blues', value: 'blues' },
     { label: 'Heavy metal', value: 'heavy-metal' },
-    { label: 'funk', value: 'funk' },
+    { label: 'Funk', value: 'funk' },
     { label: 'Reggae', value: 'reggae' },
+    { label: 'Soundtrack', value: 'soundtrack' },
 ];

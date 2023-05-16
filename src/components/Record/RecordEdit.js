@@ -7,17 +7,22 @@ import { genres } from '../../context/genres';
 const PostEdit = ({ post, onSave }) => {
     const { editPost } = useLibraryContext();
     const [title, setTitle] = useState(post.title);
+    const [author, setAuthor] = useState(post.author);
 
     const [category, setCategory] = useState(post?.genre);
     const [recordType, setRecordType] = useState(post?.recordType);
 
-    const handleChange = (event) => {
+    const handleTitle = (event) => {
         setTitle(event.target.value);
+    };
+
+    const handleAuthor = (event) => {
+        setAuthor(event.target.value);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        editPost(post.id, title, category, recordType);
+        editPost(post.id, title, category, recordType, author);
         onSave();
     };
 
@@ -29,16 +34,26 @@ const PostEdit = ({ post, onSave }) => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="flex justify-center items-center w-full flex-col gap-[10px]"
+            className="flex justify-center items-start w-full flex-col gap-[10px] mt-8"
         >
+            <label>Author</label>
+            <input
+                className="w-full bg-transparent px-2 py-1 border font-black border-solid border-[1px] border-[#171717]"
+                type="text"
+                required
+                defaultValue={author}
+                onChange={handleAuthor}
+            />
+            <label>Title</label>
             <input
                 className="w-full bg-transparent px-2 py-1 border font-black border-solid border-[1px] border-[#171717]"
                 type="text"
                 required
                 defaultValue={title}
-                onChange={handleChange}
+                onChange={handleTitle}
             />
             {/* // TODO FIND A BETTER WAY - REPETETIVE */}
+            <label>Genre</label>
             {post?.recordType === 'song' && (
                 <PostCategory
                     genres={genres}
@@ -53,7 +68,7 @@ const PostEdit = ({ post, onSave }) => {
                     postCategory={category}
                 />
             )}
-            <button className="text-[#171717] w-full px-2 py-1 border border-solid border-[1px] border-[#171717] hover:bg-[#171717] hover:text-white transition-all">
+            <button className="text-[#171717] w-fit px-2 py-1 border border-solid border-[1px] border-[#171717] hover:bg-[#171717] hover:text-white transition-all">
                 Update
             </button>
         </form>

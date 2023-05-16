@@ -24,7 +24,7 @@ const PostCategory = ({ categories, genres, onSelect, postCategory }) => {
         <select
             onChange={handleSelect}
             required
-            className="p-2 w-full placeholder:text-sm placeholder:text-slate-600 bg-transparent cursor-pointer font-black border-solid border-[1px] border-[#171717]"
+            className="p-2 w-full text-[14px] text-slate-600 bg-transparent cursor-pointer border-solid border-[1px] border-[#171717]"
             defaultValue={postCategory}
         >
             <option value="">Select Genre...</option>

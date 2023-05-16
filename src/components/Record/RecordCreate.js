@@ -14,10 +14,11 @@ const PostCreate = () => {
     const [category, setCategory] = useState([]);
     const [recordType, setRecordType] = useState('');
     const [isCreate, setIsCreate] = useState(false);
+    const [author, setAuthor] = useState('');
 
     const onSubmit = (event) => {
         event.preventDefault();
-        createPost(title, category, recordType);
+        createPost(title, category, recordType, author);
         setTitle('');
         setIsCreate(false);
     };
@@ -34,9 +35,13 @@ const PostCreate = () => {
         setRecordType(recordType);
     };
 
+    const handleAuthor = (event) => {
+        setAuthor(event.target.value);
+    };
+
     return (
         <div
-            className="flex justify-center items-center w-[48%] md:w-[32%] bg-[#C7F86080] hover:bg-[#C7F860] transition-all rounded-[7.5px] drop-shadow-2xl p-2 min-h-[200px] cursor-pointer"
+            className="flex justify-center items-center w-[48%] md:w-[32%] bg-[#C7F86080] hover:bg-[#C7F860] transition-all rounded-[7.5px] drop-shadow-2xl p-4 min-h-[200px] cursor-pointer"
             onClick={() => setIsCreate(true)}
         >
             {isCreate ? (
@@ -62,6 +67,7 @@ const PostCreate = () => {
                             handleChange={handleChange}
                             onSubmit={onSubmit}
                             title={title}
+                            handleAuthor={handleAuthor}
                         />
                     )}
                 </div>
