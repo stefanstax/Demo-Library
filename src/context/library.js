@@ -8,6 +8,7 @@ const LibraryProvider = ({ children }) => {
     const [posts, setPosts] = useState([]);
     const [comments, setComments] = useState([]);
     const [members, setMembers] = useState([]);
+    const [users, setUsers] = useState([]);
 
     const fetchPosts = useCallback(async () => {
         const response = await axios.get(`${gatewayURL}/posts`);
@@ -20,7 +21,7 @@ const LibraryProvider = ({ children }) => {
     }, []);
 
     const fetchMembers = useCallback(async () => {
-        const response = await axios.get(`${gatewayURL}/members`);
+        const response = await axios.get(`${gatewayURL}/authentication`);
         setMembers(response.data);
     });
 
@@ -96,24 +97,45 @@ const LibraryProvider = ({ children }) => {
         setPosts(updatedPosts);
     };
 
+    const createUser = async (username, password) => {
+        const response = await axios.post(`${gatewayURL}/authentication`, {
+            id: Math.floor(Math.random() * 9999999999),
+            username: username,
+            password: password,
+        });
+
+        const updatedUsers = [...users, response.data];
+        setUsers(updatedUsers);
+    };
+
     // ! Redirect Auth url back to homepage
     // todo Find a better way to mask this url and redirection
     if (window.location.pathname.includes('authentication')) {
         return (window.location.pathname = '/');
     }
 
+    const movies = posts.filter((post) => post?.recordType === 'movie');
+    const songs = posts.filter((post) => post?.recordType === 'song');
+
     const valueToShare = {
         posts,
+        movies,
+        songs,
         comments,
+        members,
+
         fetchComments,
         fetchPosts,
-        createPost,
-        editPost,
-        deletePost,
-        createComment,
-        deleteComment,
         fetchMembers,
-        members,
+
+        createPost,
+        createComment,
+        createUser,
+
+        editPost,
+
+        deletePost,
+        deleteComment,
     };
 
     return (

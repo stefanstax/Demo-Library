@@ -4,6 +4,39 @@
       "id": 1,
       "username": "stefanstax",
       "password": "Qwerty12345"
+    },
+    {
+      "id": 2814549440,
+      "username": "randompassword"
+    },
+    {
+      "id": 3117240212,
+      "username": "staxio"
+    },
+    {
+      "id": 5590892327,
+      "username": "staxio",
+      "password": "staxio2"
+    },
+    {
+      "id": 8538827189,
+      "username": "justin",
+      "password": "justin"
+    },
+    {
+      "id": 3200681358,
+      "username": "testingUser",
+      "password": "testingUser"
+    },
+    {
+      "id": 1586865386,
+      "username": "staxinski",
+      "password": "staxinskiPassword"
+    },
+    {
+      "id": 8388372763,
+      "username": "staxiotest",
+      "password": "Staxio16$d"
     }
   ],
   "members": [
@@ -15,58 +48,54 @@
   ],
   "posts": [
     {
-      "title": "Euphoria",
-      "genre": "funk",
+      "title": "Black Night: The Awakening ( 2023 ) Part III",
+      "genre": "action",
+      "recordType": "movie",
+      "author": "Steven Spillberg",
+      "id": 356
+    },
+    {
+      "title": "Huberman Labs: Innovation Part IV",
+      "genre": "sci-fi",
+      "recordType": "movie",
+      "author": "Scicomm Media",
+      "id": 688
+    },
+    {
+      "title": "Tattoo",
+      "genre": "hip-hop",
       "recordType": "song",
       "author": "Loreen",
-      "id": 1971
+      "id": 143
     },
     {
-      "id": 3220,
-      "title": "Tattoo",
-      "genre": "funk",
-      "recordType": "song",
-      "author": "Loreen"
+      "title": "Godfellas (1990)",
+      "genre": "thriller",
+      "recordType": "movie",
+      "author": "Martin Scorsese",
+      "id": 1622
     },
     {
-      "id": 1605,
-      "title": "Kill'em with kindness",
+      "title": "Euphoria",
       "genre": "pop-folk",
       "recordType": "song",
-      "author": "Selena Gomez"
+      "author": "Loreen",
+      "id": 1407
     },
     {
-      "id": 1772,
-      "title": "Ocean Away",
-      "genre": "funk",
+      "id": 5974,
+      "title": "Die Together",
+      "genre": "pop-folk",
       "recordType": "song",
-      "author": "Loreen"
+      "author": "Amanda Tenfjord"
     },
     {
-      "title": "Assassin's Creed Valhalla Main Soundtrack",
-      "genre": "soundtrack",
-      "recordType": "song",
-      "author": "Sarah Schachner",
-      "id": 6039
-    },
-    {
-      "id": 5814,
-      "title": "Sarah Schachner",
-      "genre": "soundtrack",
-      "recordType": "song",
-      "author": "Modern Warfare II"
+      "id": 6089,
+      "title": "Humberman Labs: EP 319 - How neurons work in water",
+      "genre": "sci-fi",
+      "recordType": "movie",
+      "author": "Scicomm Media"
     }
   ],
-  "comments": [
-    {
-      "id": 8592,
-      "title": "Jesus! What a soundtrack yoo",
-      "postId": 5814
-    },
-    {
-      "id": 1732,
-      "title": "Once again, totally nailed it. Well done @Sarah",
-      "postId": 6039
-    }
-  ]
+  "comments": []
 }

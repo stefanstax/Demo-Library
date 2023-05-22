@@ -1,8 +1,10 @@
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+
 const RecordType = ({ onSelect, recordtypes, recordType }) => {
     const renderRecordTypes = recordtypes.map((recordType) => (
-        <option key={recordType.value} value={recordType.value}>
+        <MenuItem key={recordType.value} value={recordType.value}>
             {recordType.label}
-        </option>
+        </MenuItem>
     ));
 
     const handleRecordType = (event) => {
@@ -10,12 +12,12 @@ const RecordType = ({ onSelect, recordtypes, recordType }) => {
     };
 
     return (
-        <select
-            onChange={handleRecordType}
-            className="p-2 w-full placeholder:text-sm placeholder:text-slate-600"
-        >
-            {renderRecordTypes}
-        </select>
+        <FormControl fullWidth>
+            <InputLabel>Select Record Type...</InputLabel>
+            <Select label="Select Record Type..." onChange={handleRecordType}>
+                {renderRecordTypes}
+            </Select>
+        </FormControl>
     );
 };
 

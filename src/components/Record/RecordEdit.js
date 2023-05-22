@@ -1,78 +1,133 @@
-import { useState } from 'react';
 import useLibraryContext from '../../hooks/use-library-context';
-import PostCategory from './PostCategory';
 import { categories } from '../../context/categories';
 import { genres } from '../../context/genres';
+import { TextField, Input, MenuItem, Select } from '@mui/material';
+import { useForm, Controller } from 'react-hook-form';
+import classNames from 'classnames';
 
-const PostEdit = ({ post, onSave }) => {
+const RecordEdit = ({ post, onSave }) => {
+    const {
+        control,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm({
+        defaultValues: {
+            author: post?.author,
+            title: post?.title,
+            genre: post?.genre || {},
+            recordType: post?.recordType,
+        },
+    });
     const { editPost } = useLibraryContext();
-    const [title, setTitle] = useState(post.title);
-    const [author, setAuthor] = useState(post.author);
 
-    const [category, setCategory] = useState(post?.genre);
-    const [recordType, setRecordType] = useState(post?.recordType);
-
-    const handleTitle = (event) => {
-        setTitle(event.target.value);
-    };
-
-    const handleAuthor = (event) => {
-        setAuthor(event.target.value);
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        editPost(post.id, title, category, recordType, author);
+    const onSubmit = (data) => {
+        editPost(post.id, data.title, data.genre, data.recordType, data.author);
         onSave();
     };
 
     // todo Check - not reading well - works on second trigger of the select
-    const handleCategory = (value) => {
-        setCategory(value);
-    };
+    // const handleCategory = (value) => {
+    //     setCategory(value);
+    // };
+    const songs = genres.map((genre) => (
+        <MenuItem key={genre.value} value={genre.value}>
+            {genre.label}
+        </MenuItem>
+    ));
+    const movies = categories.map((category) => (
+        <MenuItem key={category.value} value={category.value}>
+            {category.label}
+        </MenuItem>
+    ));
+
+    const formInvalid = Object.keys(errors);
+
+    const submitButtonClasses = classNames(
+        formInvalid?.length ? `opacity-50 cursor-not-allow` : `cursor-pointer`,
+        `w-full border border-[1px] border-[#171717] p-3 rounded hover:bg-[#171717] hover:text-white transition-all-all`
+    );
 
     return (
         <form
-            onSubmit={handleSubmit}
+            fullWidth
+            onSubmit={handleSubmit(onSubmit)}
             className="flex justify-center items-start w-full flex-col gap-[10px] mt-8"
         >
-            <label>Author</label>
-            <input
-                className="w-full bg-transparent px-2 py-1 border font-black border-solid border-[1px] border-[#171717]"
-                type="text"
-                required
-                defaultValue={author}
-                onChange={handleAuthor}
+            <Controller
+                name="author"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                    <TextField
+                        label={
+                            post?.recordType === 'movie'
+                                ? 'Producer(s)'
+                                : 'Author(s)'
+                        }
+                        fullWidth
+                        {...field}
+                    />
+                )}
             />
-            <label>Title</label>
-            <input
-                className="w-full bg-transparent px-2 py-1 border font-black border-solid border-[1px] border-[#171717]"
-                type="text"
-                required
-                defaultValue={title}
-                onChange={handleTitle}
+            {errors.author?.type === 'required' && (
+                <p
+                    className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
+                    role="alert"
+                >
+                    {post?.recordType === 'movie'
+                        ? 'Producer(s) '
+                        : 'Author(s)    '}
+                    name is required
+                </p>
+            )}
+
+            <Controller
+                name="title"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                    <TextField label="Title" fullWidth {...field} />
+                )}
             />
-            {/* // TODO FIND A BETTER WAY - REPETETIVE */}
-            <label>Genre</label>
-            {post?.recordType === 'song' && (
-                <PostCategory
-                    genres={genres}
-                    onSelect={handleCategory}
-                    postCategory={category}
-                />
+            {errors.title?.type === 'required' && (
+                <p
+                    className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
+                    role="alert"
+                >
+                    Title is required
+                </p>
             )}
-            {post?.recordType === 'movie' && (
-                <PostCategory
-                    categories={categories}
-                    onSelect={handleCategory}
-                    postCategory={category}
-                />
+
+            <Controller
+                name="genre"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                    <Select
+                        label="Select Genre..."
+                        defaultValue={post?.genre}
+                        fullWidth
+                        {...field}
+                    >
+                        {post?.recordType === 'movie' ? movies : songs}
+                    </Select>
+                )}
+            />
+            {errors.genre?.type === 'required' && (
+                <p
+                    className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
+                    role="alert"
+                >
+                    Please select{' '}
+                    {post?.recordType === 'movie'
+                        ? 'movie category'
+                        : 'song genre'}
+                </p>
             )}
-            <button className="text-[#171717] w-fit px-2 py-1 border border-solid border-[1px] border-[#171717] hover:bg-[#171717] hover:text-white transition-all">
-                Update
-            </button>
+            <input type="submit" className={submitButtonClasses} />
         </form>
     );
 };
 
-export default PostEdit;
+export default RecordEdit;

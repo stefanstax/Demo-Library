@@ -5,7 +5,9 @@ import Container from './components/Container';
 import Route from './components/Route';
 import Menu from './components/Menu';
 import MembersPage from './pages/MembersPage';
-import MoviesPage from './pages/MoviesPage';
+import MoviesPage from './pages/Movies/MoviesPage';
+import MusicPage from './pages/Songs/MusicPage';
+import RegisterPage from './pages/RegisterPage';
 
 const App = () => {
     const { fetchPosts, fetchComments } = useLibraryContext();
@@ -27,6 +29,12 @@ const App = () => {
             </Route>
             <Route path="/movies">
                 <MoviesPage />
+            </Route>
+            <Route path="/music">
+                <MusicPage />
+            </Route>
+            <Route path="/register">
+                <RegisterPage />
             </Route>
         </Container>
     );

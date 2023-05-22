@@ -1,47 +1,116 @@
 import React from 'react';
-import PostCategory from './Record/PostCategory';
+import { TextField, Typography, MenuItem, Select } from '@mui/material';
+import { Controller, useForm } from 'react-hook-form';
+import { genres } from '../context/genres';
 import classNames from 'classnames';
 
-const Song = ({
-    handleCategory,
-    genres,
-    handleAuthor,
-    handleChange,
-    onSubmit,
-}) => {
-    const borderClasses = classNames(
-        `border-solid border-[1px] border-[#171717]`
+const Song = ({ createPost }) => {
+    const {
+        handleSubmit,
+        control,
+        reset,
+        formState: { errors },
+    } = useForm({
+        defaultValues: {
+            author: '',
+            title: '',
+            genre: '',
+            recordType: 'song',
+        },
+    });
+
+    const onSubmit = (data) => {
+        createPost(data.title, data.genre, data.recordType, data.author);
+        // Reset Form
+        reset();
+    };
+
+    const options = genres.map((genre) => (
+        <MenuItem key={genre.value} value={genre.value}>
+            {genre.label}
+        </MenuItem>
+    ));
+
+    const formInvalid = Object.keys(errors);
+
+    const submitButtonClasses = classNames(
+        formInvalid?.length ? `opacity-50 cursor-not-allow` : `cursor-pointer`,
+        `w-full border border-[1px] border-[#171717] p-3 rounded hover:bg-[#171717] hover:text-white transition-all-all`
     );
+
     return (
         <>
-            <h4 className="w-full text-2xl font-black">Create a new song</h4>
-            <form
-                onSubmit={onSubmit}
-                className="flex justify-center items-start flex-col gap-[10px] w-full"
+            <Typography
+                variant="h4"
+                fontSize={20}
+                fontWeight={900}
+                textTransform={'uppercase'}
+                my={2}
             >
-                <label>Title</label>
-                <input
-                    className={`p-2 w-full placeholder:text-sm placeholder:text-slate-600 bg-transparent ${borderClasses}`}
-                    type="text"
-                    required
-                    placeholder="Song name..."
-                    onChange={handleChange}
+                Create a new song
+            </Typography>
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex flex-wrap gap-[10px] justify-center items-center"
+            >
+                <Controller
+                    name="author"
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                        <TextField
+                            label="Author"
+                            aria-invalid={errors.author ? 'true' : 'false'}
+                            fullWidth
+                            {...field}
+                        />
+                    )}
                 />
-                <label>Author</label>
-                <input
-                    className={`p-2 w-full placeholder:text-sm placeholder:text-slate-600 bg-transparent ${borderClasses}`}
-                    type="text"
-                    required
-                    placeholder="Author's name..."
-                    onChange={handleAuthor}
+                {errors.author?.type === 'required' && (
+                    <p
+                        className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
+                        role="alert"
+                    >
+                        Author's name is required
+                    </p>
+                )}
+
+                <Controller
+                    name="title"
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                        <TextField label="Title" fullWidth {...field} />
+                    )}
                 />
-                <label>Genre</label>
-                <PostCategory genres={genres} onSelect={handleCategory} />
-                <button
-                    className={`w-full p-2 hover:bg-[#171717] hover:text-white transition-all ${borderClasses}`}
-                >
-                    Add song
-                </button>
+                {errors.title?.type === 'required' && (
+                    <p
+                        className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
+                        role="alert"
+                    >
+                        Song title name is required
+                    </p>
+                )}
+
+                <Controller
+                    name="genre"
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                        <Select label="Genre..." fullWidth {...field}>
+                            {options}
+                        </Select>
+                    )}
+                />
+                {errors.genre?.type === 'required' && (
+                    <p
+                        className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
+                        role="alert"
+                    >
+                        Please select song genre
+                    </p>
+                )}
+                <input type="submit" className={submitButtonClasses} />
             </form>
         </>
     );

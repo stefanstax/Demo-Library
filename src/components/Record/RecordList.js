@@ -3,9 +3,9 @@ import useLibraryContext from '../../hooks/use-library-context';
 import PostShow from './RecordShow';
 import PostCreate from './RecordCreate';
 import CommentList from '../Comments/CommentList';
-import Container from '../Container';
+import { Container, Typography, Grid } from '@mui/material';
 
-const PostList = () => {
+const RecordList = () => {
     const { posts, comments } = useLibraryContext();
 
     const displayPosts = posts.map((post) => {
@@ -20,21 +20,17 @@ const PostList = () => {
 
     return (
         // todo Make a Grid component - allow ...rest with classes
-        <Container
-            secondary
-            justify={'between'}
-            flex
-            items={'stretch'}
-            wrap
-            gap={'[10px]'}
-            className="mt-28"
-        >
-            {displayPosts}
-            <PostCreate />
-            <h4 className="w-full font-black text-2xl">Comments</h4>
-            <CommentList />
+        <Container fluid className="mt-24">
+            <Grid container gap={5}>
+                {displayPosts}
+                <PostCreate />
+                <Typography variant="h4" className="w-full font-black text-2xl">
+                    Comments
+                </Typography>
+                <CommentList />
+            </Grid>
         </Container>
     );
 };
 
-export default PostList;
+export default RecordList;

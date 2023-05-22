@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
-import Card from '../Card';
-import PostDelete from './RecordDelete';
-import PostEdit from './RecordEdit';
+import { useState } from 'react';
+import { Grid, Typography, Box } from '@mui/material';
+import RecordEdit from './RecordEdit';
 import PostPhoto from './RecordPhoto';
 import CreateComment from '../Comments/CommentCreate';
-import classNames from 'classnames';
 
-const PostShow = ({ post, comments }) => {
+const RecordShow = ({ post, comments }) => {
     const [isEdit, setIsEdit] = useState(false);
 
     const displayComments = comments.map((comment) => {
         return (
-            <span key={comment?.id} className="w-full underline">
-                {comment?.title}
-            </span>
+            <Grid item xs={12}>
+                <Typography
+                    variant="span"
+                    key={comment?.id}
+                    className="w-full underline"
+                >
+                    {comment?.title}
+                </Typography>
+            </Grid>
         );
     });
 
@@ -21,61 +25,96 @@ const PostShow = ({ post, comments }) => {
         setIsEdit(false);
     };
 
-    const attributes = classNames(
-        `text-gray-800 flex justify-between items-center gap-[5px] w-full`
-    );
-
     return (
-        <Card book className="my-12">
+        <Grid
+            item
+            xs={12}
+            md={4}
+            lg={3}
+            className="my-12 bg-slate-100 flex flex-wrap justify-start items-between"
+        >
             <PostPhoto post={post} />
             {/* Post Delete */}
-            <div className="w-full">
-                <div className="w-fit mb-4 flex gap-[10px] justify-center items-center bg-[#171717] text-white drop-shadow-xl">
-                    <span className="text-[12px] flex gap-[10px] justify-center items-center p-2">
-                        ID: {post.id}
-                        <PostDelete post={post} />
-                    </span>
-                </div>
+            <Box className="w-full flex flex-col justify-start items-start p-6 min-h-[200px]">
                 {isEdit ? (
-                    <PostEdit post={post} onSave={disableSave} />
+                    <RecordEdit post={post} onSave={disableSave} />
                 ) : (
                     <>
-                        <h4 className={`text-[20px] font-black ${attributes}`}>
-                            {post?.title}
-                        </h4>
-                        <span className={`text-[14px] italic ${attributes}`}>
-                            by {post?.author}
-                        </span>
-                        <span className={`text-[14px] italic ${attributes}`}>
-                            categorized in {post?.genre}
-                        </span>
-                        <button
-                            onClick={() => setIsEdit(!isEdit)}
-                            className="text-[#171717] w-fit px-2 py-1 border border-solid border-[1px] border-[#171717] hover:bg-[#171717] hover:text-white transition-all mt-4"
+                        <Typography
+                            variant="h4"
+                            fontSize={18}
+                            fontWeight={900}
+                            mb={2}
                         >
-                            Edit{' '}
-                            {post?.recordType === 'movie' ? 'Movie' : 'Song'}
-                        </button>
+                            {post?.title}
+                        </Typography>
+                        <Box
+                            component="div"
+                            className="flex flex-col gap-[5px] mb-8"
+                        >
+                            {post?.author && (
+                                <Typography
+                                    variant="span"
+                                    fontSize={14}
+                                    fontStyle={'italic'}
+                                    color={'393939'}
+                                >
+                                    by {post?.author}
+                                </Typography>
+                            )}
+                            <Box
+                                component="span"
+                                className="bg-neutral-200 w-fit px-2 py-1 rounded"
+                            >
+                                <Typography
+                                    variant="span"
+                                    fontSize={14}
+                                    fontStyle={'italic'}
+                                    color={'393939'}
+                                >
+                                    {post?.genre}
+                                </Typography>
+                            </Box>
+                        </Box>
                     </>
                 )}
-            </div>
-            {/* Comments */}
-            <div className="w-full flex flex-wrap justify-start items-center gap-[5px] mt-8">
-                <h5 className="w-full font-bold">Comments</h5>
-                <span className="text-[10px]">
-                    {displayComments?.length}{' '}
-                    {displayComments?.length > 1 ||
-                    displayComments?.length === 0
-                        ? 'comments'
-                        : 'comment'}
-                </span>
-                {displayComments?.length ? displayComments : null}
-                <span>
-                    <CreateComment post={post} />
-                </span>
-            </div>
-        </Card>
+
+                {/* Comments */}
+                {/* <Grid container gap={2} className="mt-12">
+                    <Grid item xs={12}>
+                        <Typography variant="h5" className="w-full font-bold">
+                            Comments
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="span" className="text-[10px]">
+                            {displayComments?.length}{' '}
+                            {displayComments?.length > 1 ||
+                            displayComments?.length === 0
+                                ? 'comments'
+                                : 'comment'}
+                        </Typography>
+                    </Grid>
+                    <Grid container item xs={12}>
+                        {displayComments?.length ? displayComments : null}
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="span">
+                            <CreateComment post={post} />
+                        </Typography>
+                    </Grid>
+                </Grid> */}
+            </Box>
+            <Box
+                component="button"
+                className="w-full max-h-[50px] rounded-b border border-[1px] border-[#171717] p-3 hover:bg-[#171717] hover:text-white transition-all"
+                onClick={() => setIsEdit(!isEdit)}
+            >
+                {!isEdit && 'Edit'}
+                {isEdit && 'Cancel'}
+            </Box>
+        </Grid>
     );
 };
 
-export default PostShow;
+export default RecordShow;

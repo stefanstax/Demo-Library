@@ -9,4 +9,5 @@ export const genres = [
     { label: 'Funk', value: 'funk' },
     { label: 'Reggae', value: 'reggae' },
     { label: 'Soundtrack', value: 'soundtrack' },
+    { value: 'Text', label: 'Test' },
 ];
