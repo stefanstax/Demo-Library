@@ -1,6 +1,8 @@
-- Upon submitting comment clear field; ⏲️
 - When changing record type clear title field; ✅
-- Upon creation close previously selected record type;
-- Draw a wire frame
-- Move button from forms into a component
-- Compress errors messages from fields
+- Clear forms upon save or creation ✅
+- Upon submitting comment clear field; ⏲️
+- Upon creation close previously selected record type; ⏲️
+- Draw a wire frame 🗺️
+- Move hook submit button from forms into a component ⏲️
+- Compress errors messages from fields ⏲️
+- Project de-cluter and proper file structure ⏲️
