@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Container from '../components/Container';
 import useLibraryContext from '../hooks/use-library-context';
+import { Container } from '@mui/material';
 
 const MembersPage = () => {
     const { members, fetchMembers } = useLibraryContext();
@@ -16,11 +16,7 @@ const MembersPage = () => {
             </div>
         );
     });
-    return (
-        <Container secondary className={'my-24'}>
-            {displayMembers}
-        </Container>
-    );
+    return <>{displayMembers}</>;
 };
 
 export default MembersPage;

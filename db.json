@@ -37,6 +37,11 @@
       "id": 8388372763,
       "username": "staxiotest",
       "password": "Staxio16$d"
+    },
+    {
+      "id": 3526107258,
+      "username": "mladovicki",
+      "password": "Staxy12$%44"
     }
   ],
   "members": [
@@ -83,11 +88,11 @@
       "id": 1407
     },
     {
-      "id": 5974,
       "title": "Die Together",
-      "genre": "pop-folk",
+      "genre": "reggae",
       "recordType": "song",
-      "author": "Amanda Tenfjord"
+      "author": "Amanda Tenfjord",
+      "id": 5974
     },
     {
       "id": 6089,
@@ -95,6 +100,20 @@
       "genre": "sci-fi",
       "recordType": "movie",
       "author": "Scicomm Media"
+    },
+    {
+      "id": 6109,
+      "title": "Huberman Labs: EP 320 - How much should you really sleep per day",
+      "genre": "sci-fi",
+      "recordType": "movie",
+      "author": "Scicomm Media"
+    },
+    {
+      "id": 2822,
+      "title": "The Monster",
+      "genre": "hip-hop",
+      "recordType": "song",
+      "author": "Eminem, Rihanna"
     }
   ],
   "comments": []

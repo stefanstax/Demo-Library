@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useLibraryContext from '../../hooks/use-library-context';
 import PostShow from './RecordShow';
 import PostCreate from './RecordCreate';
@@ -6,7 +6,11 @@ import CommentList from '../Comments/CommentList';
 import { Container, Typography, Grid } from '@mui/material';
 
 const RecordList = () => {
-    const { posts, comments } = useLibraryContext();
+    const { fetchPosts, posts, comments } = useLibraryContext();
+
+    useEffect(() => {
+        fetchPosts();
+    }, []);
 
     const displayPosts = posts.map((post) => {
         const filteredComments = comments.filter(
