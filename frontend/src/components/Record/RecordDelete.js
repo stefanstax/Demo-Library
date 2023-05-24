@@ -1,11 +1,11 @@
-import { AiOutlineDelete } from 'react-icons/ai';
-import useLibraryContext from '../../hooks/use-library-context';
+import { AiOutlineDelete } from "react-icons/ai";
+import useLibraryContext from "../../hooks/use-library-context";
 
 const RecordDelete = ({ post }) => {
     const { deletePost } = useLibraryContext();
 
     const deletePostById = () => {
-        deletePost(post.id);
+        deletePost(post._id);
     };
     return (
         <span

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Box, Typography } from '@mui/material';
-import RecordDelete from './RecordDelete';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Box, Typography } from "@mui/material";
+import RecordDelete from "./RecordDelete";
 
 const Photo = ({ post }) => {
     const [response, setResponse] = useState(null);
@@ -16,7 +16,7 @@ const Photo = ({ post }) => {
                 },
                 headers: {
                     Authorization:
-                        'uxU8rcXkifjxppdPA1IyiQ0VYnhtUlnDYgV8d8m5QxcOByoynogcpQM9',
+                        "uxU8rcXkifjxppdPA1IyiQ0VYnhtUlnDYgV8d8m5QxcOByoynogcpQM9",
                 },
             });
             setResponse(result.data);
@@ -36,7 +36,7 @@ const Photo = ({ post }) => {
                     variant="span"
                     className="text-[12px] flex gap-[10px] justify-center items-center p-1"
                 >
-                    ID: {post.id}
+                    ID: {post._id}
                     <RecordDelete post={post} />
                 </Typography>
             </Box>

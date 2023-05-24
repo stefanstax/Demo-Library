@@ -9,6 +9,8 @@ const LibraryProvider = ({ children }) => {
     const [comments, setComments] = useState([]);
     const [members, setMembers] = useState([]);
     const [users, setUsers] = useState([]);
+    const [podcastCategories, setPodcastCategories] = useState([]);
+    const [movieCategories, setMovieCategories] = useState([]);
 
     const fetchPosts = useCallback(async () => {
         const response = await axios.get(`${gatewayURL}/posts`);
@@ -25,26 +27,15 @@ const LibraryProvider = ({ children }) => {
         setMembers(response.data);
     });
 
-    const createComment = async (newTitle, postId) => {
-        const response = await axios.post(`${gatewayURL}/comments/`, {
-            id: Math.round(Math.random() * 999999),
-            title: newTitle,
-            postId: postId,
-        });
+    const fetchPodcastCategories = useCallback(async () => {
+        const response = await axios.get(`${gatewayURL}/podcast-categories`);
+        setPodcastCategories(response?.data);
+    });
 
-        const updatedComments = [...comments, response.data];
-        setComments(updatedComments);
-    };
-
-    const deleteComment = async (id) => {
-        await axios.delete(`${gatewayURL}/comments/${id}`);
-
-        const updatedComments = comments.filter((comment) => {
-            return comment.id !== id;
-        });
-
-        setComments(updatedComments);
-    };
+    const fetchMovieCategories = useCallback(async () => {
+        const response = await axios.get(`${gatewayURL}/movie-categories`);
+        setMovieCategories(response?.data);
+    });
 
     const createPost = async (
         newTitle,
@@ -53,7 +44,6 @@ const LibraryProvider = ({ children }) => {
         author
     ) => {
         const response = await axios.post(`${gatewayURL}/posts`, {
-            id: Math.round(Math.random() * 999999),
             title: newTitle,
             genre: pickedCategory,
             recordType: pickedRecord,
@@ -62,6 +52,26 @@ const LibraryProvider = ({ children }) => {
 
         const updatedPosts = [...posts, response.data];
         setPosts(updatedPosts);
+    };
+
+    const createPodcastCategory = async (title, value) => {
+        const response = await axios.post(`${gatewayURL}/podcast-categories`, {
+            title: title,
+            value: value,
+        });
+
+        const newPodcastCategories = [...podcastCategories, response.data];
+        setPodcastCategories(newPodcastCategories);
+    };
+
+    const createMovieCategory = async (title, value) => {
+        const response = await axios.post(`${gatewayURL}/movie-categories`, {
+            title: title,
+            value: value,
+        });
+
+        const newMovieCategories = [...movieCategories, response.data];
+        setMovieCategories(newMovieCategories);
     };
 
     const editPost = async (
@@ -99,7 +109,6 @@ const LibraryProvider = ({ children }) => {
 
     const createUser = async (username, password) => {
         const response = await axios.post(`${gatewayURL}/authentication`, {
-            id: Math.floor(Math.random() * 9999999999),
             username: username,
             password: password,
         });
@@ -116,6 +125,7 @@ const LibraryProvider = ({ children }) => {
 
     const movies = posts.filter((post) => post?.recordType === "movie");
     const songs = posts.filter((post) => post?.recordType === "song");
+    const podcasts = posts.filter((post) => post?.recordType === "podcast");
 
     const valueToShare = {
         posts,
@@ -123,19 +133,24 @@ const LibraryProvider = ({ children }) => {
         songs,
         comments,
         members,
+        podcasts,
+        podcastCategories,
+        movieCategories,
 
         fetchComments,
         fetchPosts,
         fetchMembers,
+        fetchPodcastCategories,
+        fetchMovieCategories,
 
+        createMovieCategory,
+        createPodcastCategory,
         createPost,
-        createComment,
         createUser,
 
         editPost,
 
         deletePost,
-        deleteComment,
     };
 
     return (

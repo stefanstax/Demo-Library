@@ -1,10 +1,12 @@
-import React from 'react';
-import { TextField, Typography, MenuItem, Select } from '@mui/material';
-import { Controller, useForm } from 'react-hook-form';
-import { genres } from '../context/genres';
-import classNames from 'classnames';
+import { TextField, Typography, MenuItem, Select } from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
+import classNames from "classnames";
+import useLibraryContext from "../../hooks/use-library-context";
+import { useEffect } from "react";
+import { categories } from "../../context/categories";
 
-const Song = ({ createPost }) => {
+const CreatePodcast = ({ createPost }) => {
+    const { podcastCategories, fetchPodcastCategories } = useLibraryContext();
     const {
         handleSubmit,
         control,
@@ -12,12 +14,16 @@ const Song = ({ createPost }) => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            author: '',
-            title: '',
-            genre: '',
-            recordType: 'song',
+            author: "",
+            title: "",
+            genre: "",
+            recordType: "podcast",
         },
     });
+
+    useEffect(() => {
+        fetchPodcastCategories();
+    }, []);
 
     const onSubmit = (data) => {
         createPost(data.title, data.genre, data.recordType, data.author);
@@ -25,9 +31,9 @@ const Song = ({ createPost }) => {
         reset();
     };
 
-    const options = genres.map((genre) => (
-        <MenuItem key={genre.value} value={genre.value}>
-            {genre.label}
+    const options = podcastCategories.map((category) => (
+        <MenuItem key={category.value} value={category.value}>
+            {category.title}
         </MenuItem>
     ));
 
@@ -35,7 +41,7 @@ const Song = ({ createPost }) => {
 
     const submitButtonClasses = classNames(
         formInvalid?.length ? `opacity-50 cursor-not-allow` : `cursor-pointer`,
-        `w-full border border-[1px] border-[#171717] p-3 rounded hover:bg-[#171717] hover:text-white transition-all-all`
+        `w-full border border-[1px] border-[#171717] p-3 rounded hover:bg-[#171717] hover:text-white transition-all`
     );
 
     return (
@@ -44,10 +50,10 @@ const Song = ({ createPost }) => {
                 variant="h4"
                 fontSize={20}
                 fontWeight={900}
-                textTransform={'uppercase'}
+                textTransform={"uppercase"}
                 my={2}
             >
-                Create a new song
+                Create a new Podcast
             </Typography>
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -59,19 +65,19 @@ const Song = ({ createPost }) => {
                     rules={{ required: true }}
                     render={({ field }) => (
                         <TextField
-                            label="Author"
-                            aria-invalid={errors.author ? 'true' : 'false'}
+                            label="Producer(s)"
+                            aria-invalid={errors.author ? "true" : "false"}
                             fullWidth
                             {...field}
                         />
                     )}
                 />
-                {errors.author?.type === 'required' && (
+                {errors.author?.type === "required" && (
                     <p
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Author's name is required
+                        Producer name is required
                     </p>
                 )}
 
@@ -83,12 +89,12 @@ const Song = ({ createPost }) => {
                         <TextField label="Title" fullWidth {...field} />
                     )}
                 />
-                {errors.title?.type === 'required' && (
+                {errors.title?.type === "required" && (
                     <p
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Song title name is required
+                        Podcast title name is required
                     </p>
                 )}
 
@@ -97,17 +103,17 @@ const Song = ({ createPost }) => {
                     control={control}
                     rules={{ required: true }}
                     render={({ field }) => (
-                        <Select label="Genre..." fullWidth {...field}>
+                        <Select label="Genre" fullWidth {...field}>
                             {options}
                         </Select>
                     )}
                 />
-                {errors.genre?.type === 'required' && (
+                {errors.genre?.type === "required" && (
                     <p
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Please select song genre
+                        Please select Podcast genre
                     </p>
                 )}
                 <input type="submit" className={submitButtonClasses} />
@@ -116,4 +122,4 @@ const Song = ({ createPost }) => {
     );
 };
 
-export default Song;
+export default CreatePodcast;

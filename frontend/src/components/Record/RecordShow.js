@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Grid, Typography, Box } from '@mui/material';
-import RecordEdit from './RecordEdit';
-import PostPhoto from './RecordPhoto';
-import CreateComment from '../Comments/CommentCreate';
+import { useState } from "react";
+import { Grid, Typography, Box } from "@mui/material";
+import RecordEdit from "./RecordEdit";
+import PostPhoto from "./RecordPhoto";
+import CreateComment from "../Comments/CommentCreate";
 
 const RecordShow = ({ post, comments }) => {
     const [isEdit, setIsEdit] = useState(false);
@@ -40,6 +40,14 @@ const RecordShow = ({ post, comments }) => {
                     <RecordEdit post={post} onSave={disableSave} />
                 ) : (
                     <>
+                        <Box
+                            component="span"
+                            className="bg-slate-900 text-white w-fit px-2 py-1 rounded drop-shadow-lg mb-2"
+                        >
+                            <Typography variant="span" fontSize={14}>
+                                {post?.recordType}
+                            </Typography>
+                        </Box>
                         <Typography
                             variant="h4"
                             fontSize={18}
@@ -56,8 +64,8 @@ const RecordShow = ({ post, comments }) => {
                                 <Typography
                                     variant="span"
                                     fontSize={14}
-                                    fontStyle={'italic'}
-                                    color={'393939'}
+                                    fontStyle={"italic"}
+                                    color={"393939"}
                                 >
                                     by {post?.author}
                                 </Typography>
@@ -69,8 +77,8 @@ const RecordShow = ({ post, comments }) => {
                                 <Typography
                                     variant="span"
                                     fontSize={14}
-                                    fontStyle={'italic'}
-                                    color={'393939'}
+                                    fontStyle={"italic"}
+                                    color={"393939"}
                                 >
                                     {post?.genre}
                                 </Typography>
@@ -110,8 +118,8 @@ const RecordShow = ({ post, comments }) => {
                 className="w-full max-h-[50px] rounded-b border border-[1px] border-[#171717] p-3 hover:bg-[#171717] hover:text-white transition-all"
                 onClick={() => setIsEdit(!isEdit)}
             >
-                {!isEdit && 'Edit'}
-                {isEdit && 'Cancel'}
+                {!isEdit && "Edit"}
+                {isEdit && "Cancel"}
             </Box>
         </Grid>
     );

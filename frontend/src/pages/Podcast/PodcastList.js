@@ -1,12 +1,12 @@
 import RecordShow from "../../components/Record/RecordShow";
 import useLibraryContext from "../../hooks/use-library-context";
 import { Box, Grid } from "@mui/material";
-import Song from "./CreateSong";
+import CreatePodcast from "./CreatePodcast";
 
-const SongsList = () => {
-    const { songs, comments, createPost } = useLibraryContext();
+const PodcastList = () => {
+    const { podcasts, comments, createPost } = useLibraryContext();
 
-    const allSongs = songs.map((post) => {
+    const allMovies = podcasts.map((post) => {
         const filteredComments = comments.filter(
             (comment) => comment.postId === post.id
         );
@@ -20,7 +20,7 @@ const SongsList = () => {
         // todo Make a Grid component - allow ...rest with classes
         <>
             <Grid container gap={5}>
-                {allSongs}
+                {allMovies}
                 <Grid
                     item
                     xs={12}
@@ -29,7 +29,7 @@ const SongsList = () => {
                     className="flex justify-center items-center bg-[#C7F86080] hover:bg-[#C7F860] transition-all rounded-[7.5px] drop-shadow-2xl p-4 min-h-[200px] cursor-pointer"
                 >
                     <Box className="flex justify-center items-center flex-col gap-[10px] w-full">
-                        <Song createPost={createPost} />
+                        <CreatePodcast createPost={createPost} />
                     </Box>
                 </Grid>
             </Grid>
@@ -37,4 +37,4 @@ const SongsList = () => {
     );
 };
 
-export default SongsList;
+export default PodcastList;

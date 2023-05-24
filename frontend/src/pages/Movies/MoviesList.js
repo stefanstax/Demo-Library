@@ -1,7 +1,7 @@
-import Movie from '../../components/Movie';
-import RecordShow from '../../components/Record/RecordShow';
-import useLibraryContext from '../../hooks/use-library-context';
-import { Box, Container, Grid } from '@mui/material';
+import CreateMovie from "./CreateMovie";
+import RecordShow from "../../components/Record/RecordShow";
+import useLibraryContext from "../../hooks/use-library-context";
+import { Box, Grid } from "@mui/material";
 
 const MoviesList = () => {
     const { movies, comments, createPost } = useLibraryContext();
@@ -29,7 +29,7 @@ const MoviesList = () => {
                     className="flex justify-center items-center bg-[#C7F86080] hover:bg-[#C7F860] transition-all rounded-[7.5px] drop-shadow-2xl p-4 min-h-[200px] cursor-pointer"
                 >
                     <Box className="flex justify-center items-center flex-col gap-[10px] w-full">
-                        <Movie createPost={createPost} />
+                        <CreateMovie createPost={createPost} />
                     </Box>
                 </Grid>
             </Grid>

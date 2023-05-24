@@ -3,9 +3,13 @@ import Route from "./components/Route";
 import Menu from "./components/Menu";
 import MembersPage from "./pages/MembersPage";
 import MoviesPage from "./pages/Movies/MoviesPage";
-import MusicPage from "./pages/Songs/MusicPage";
+import SongsPage from "./pages/Songs/SongsPage";
 import RegisterPage from "./pages/RegisterPage";
 import { Container } from "@mui/material";
+import PodcastPage from "./pages/Podcast/PodcastPage";
+import CreateRecordGenre from "./components/CreatePodcastGenre";
+import CreateMovieGenre from "./components/CreateMovieGenre";
+import CreatePodcastGenre from "./components/CreatePodcastGenre";
 
 const App = () => {
     return (
@@ -22,10 +26,17 @@ const App = () => {
                 <MoviesPage />
             </Route>
             <Route path="/music">
-                <MusicPage />
+                <SongsPage />
+            </Route>
+            <Route path="/podcasts">
+                <PodcastPage />
             </Route>
             <Route path="/register">
                 <RegisterPage />
+            </Route>
+            <Route path="/genres">
+                <CreatePodcastGenre />
+                <CreateMovieGenre />
             </Route>
         </Container>
     );

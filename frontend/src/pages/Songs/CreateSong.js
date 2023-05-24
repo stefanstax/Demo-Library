@@ -1,10 +1,9 @@
-import React from 'react';
-import { TextField, Typography, MenuItem, Select } from '@mui/material';
-import { Controller, useForm } from 'react-hook-form';
-import { categories } from '../context/categories';
-import classNames from 'classnames';
+import { TextField, Typography, MenuItem, Select } from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
+import { genres } from "../../context/genres";
+import classNames from "classnames";
 
-const Movie = ({ createPost }) => {
+const CreateSong = ({ createPost }) => {
     const {
         handleSubmit,
         control,
@@ -12,10 +11,10 @@ const Movie = ({ createPost }) => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            author: '',
-            title: '',
-            genre: '',
-            recordType: 'movie',
+            author: "",
+            title: "",
+            genre: "",
+            recordType: "song",
         },
     });
 
@@ -25,9 +24,9 @@ const Movie = ({ createPost }) => {
         reset();
     };
 
-    const options = categories.map((category) => (
-        <MenuItem key={category.value} value={category.value}>
-            {category.label}
+    const options = genres.map((genre) => (
+        <MenuItem key={genre.value} value={genre.value}>
+            {genre.label}
         </MenuItem>
     ));
 
@@ -35,7 +34,7 @@ const Movie = ({ createPost }) => {
 
     const submitButtonClasses = classNames(
         formInvalid?.length ? `opacity-50 cursor-not-allow` : `cursor-pointer`,
-        `w-full border border-[1px] border-[#171717] p-3 rounded hover:bg-[#171717] hover:text-white transition-all`
+        `w-full border border-[1px] border-[#171717] p-3 rounded hover:bg-[#171717] hover:text-white transition-all-all`
     );
 
     return (
@@ -44,10 +43,10 @@ const Movie = ({ createPost }) => {
                 variant="h4"
                 fontSize={20}
                 fontWeight={900}
-                textTransform={'uppercase'}
+                textTransform={"uppercase"}
                 my={2}
             >
-                Create a new movie
+                Create a new song
             </Typography>
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -59,19 +58,19 @@ const Movie = ({ createPost }) => {
                     rules={{ required: true }}
                     render={({ field }) => (
                         <TextField
-                            label="Producer(s)"
-                            aria-invalid={errors.author ? 'true' : 'false'}
+                            label="Author"
+                            aria-invalid={errors.author ? "true" : "false"}
                             fullWidth
                             {...field}
                         />
                     )}
                 />
-                {errors.author?.type === 'required' && (
+                {errors.author?.type === "required" && (
                     <p
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Producer name is required
+                        Author's name is required
                     </p>
                 )}
 
@@ -83,12 +82,12 @@ const Movie = ({ createPost }) => {
                         <TextField label="Title" fullWidth {...field} />
                     )}
                 />
-                {errors.title?.type === 'required' && (
+                {errors.title?.type === "required" && (
                     <p
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Movie title name is required
+                        Song title name is required
                     </p>
                 )}
 
@@ -97,17 +96,17 @@ const Movie = ({ createPost }) => {
                     control={control}
                     rules={{ required: true }}
                     render={({ field }) => (
-                        <Select label="Genre" fullWidth {...field}>
+                        <Select label="Genre..." fullWidth {...field}>
                             {options}
                         </Select>
                     )}
                 />
-                {errors.genre?.type === 'required' && (
+                {errors.genre?.type === "required" && (
                     <p
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Please select movie genre
+                        Please select song genre
                     </p>
                 )}
                 <input type="submit" className={submitButtonClasses} />
@@ -116,4 +115,4 @@ const Movie = ({ createPost }) => {
     );
 };
 
-export default Movie;
+export default CreateSong;

@@ -1,15 +1,16 @@
-import { useState } from 'react';
-import { AiOutlinePlus } from 'react-icons/ai';
-import useLibraryContext from '../../hooks/use-library-context';
-import { recordtypes } from '../../context/recordtypes';
-import RecordType from './RecordType';
-import Movie from '../Movie';
-import Song from '../Song';
-import { Grid, Box } from '@mui/material';
+import { useState } from "react";
+import { AiOutlinePlus } from "react-icons/ai";
+import useLibraryContext from "../../hooks/use-library-context";
+import { recordtypes } from "../../context/recordtypes";
+import RecordType from "./RecordType";
+import { Grid, Box } from "@mui/material";
+import CreatePodcast from "../../pages/Podcast/CreatePodcast";
+import CreateSong from "../../pages/Songs/CreateSong";
+import CreateMovie from "../../pages/Movies/CreateMovie";
 
 const RecordCreate = () => {
     const { createPost } = useLibraryContext();
-    const [recordType, setRecordType] = useState('');
+    const [recordType, setRecordType] = useState("");
     const [isCreate, setIsCreate] = useState(false);
 
     const handleRecordType = (recordType) => {
@@ -35,11 +36,16 @@ const RecordCreate = () => {
                         onSelect={handleRecordType}
                     />
 
-                    {recordType === 'movie' && (
-                        <Movie createPost={createPost} />
+                    {recordType === "movie" && (
+                        <CreateMovie createPost={createPost} />
                     )}
 
-                    {recordType === 'song' && <Song createPost={createPost} />}
+                    {recordType === "song" && (
+                        <CreateSong createPost={createPost} />
+                    )}
+                    {recordType === "podcast" && (
+                        <CreatePodcast createPost={createPost} />
+                    )}
                 </Box>
             ) : (
                 <AiOutlinePlus fontSize={40} />

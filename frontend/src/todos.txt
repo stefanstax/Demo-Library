@@ -17,9 +17,9 @@
 - Compress errors messages from fields ⏲️
 - Project de-cluter and proper file structure ⏲️
 - Add log in Auth ⏲️
-> After Log in Auth has been built do or redo:
     - Add Song genres through API ⏲️
-    - Add Movie genres through API ⏲️
+    - Add Movie genres through API ✅
+    - Add Podcast genres through API ✅
     - Add Paths through API ⏲️
-    - Create Movie ⏲️
-    - Create Song ⏲️
+    - Create Movie ✅
+    - Create Song✅
