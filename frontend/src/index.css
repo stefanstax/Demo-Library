@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.MuiInputBase-input {
+    color: #d2d2d2 !important;
+  }
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: rgba(210, 210, 210, 1)!important;
+}
+
+.MuiFormLabel-root {
+    color: #d2d2d2!important;
+}
+
+input[type="submit"] {
+    border-color: #C7F860!important;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: white;
+    transition: all .15s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: #C7F860;
+    color: black;
+}

@@ -19,6 +19,7 @@ const PodcastPage = () => {
                 textTransform={"uppercase"}
                 className="underline"
                 mb={8}
+                color={"white"}
             >
                 List of all podcasts
             </Typography>

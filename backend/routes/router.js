@@ -3,6 +3,9 @@ const router = express.Router();
 const schemas = require("../models/schemas");
 const { ObjectId } = require("mongodb");
 
+const Posts = schemas.Posts;
+const Records = schemas.Records;
+
 // Post to db for Posts
 router.post("/posts", async (req, res) => {
   const { title, genre, recordType, author } = req.body;
@@ -13,7 +16,7 @@ router.post("/posts", async (req, res) => {
     recordType: recordType,
     author: author,
   };
-  const newRecord = new schemas.Posts(recordData);
+  const newRecord = new Posts(recordData);
   await newRecord.save();
 
   res.end();
@@ -83,37 +86,17 @@ router.get("/movie-categories", async (req, res) => {
   }
 });
 
-router.delete("/posts/:id", async (req, res) => {
-  schemas.Posts.deleteOne({ _id: new ObjectId(req.params.id) })
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: "Could not delete the document" });
-    });
-});
-
-router.put("/posts/:id", async (req, res) => {
-  schemas.Posts.updateOne({ _id: new ObjectId(req.params.id) })
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: "Could not update the document" });
-    });
-});
-
-// Get all posts from db
+// ! POSTS DB
+// * GET
 router.get("/posts", async (req, res) => {
-  const posts = schemas.Posts;
+  const posts = Posts;
   const recordData = await posts.find({}).exec();
 
   if (recordData) {
     res.send(JSON.stringify(recordData));
   }
 });
-
-// Post to db for Authentication
+// * POST
 router.post("/authentication", async (req, res) => {
   const { username, password } = req.body;
   const registerData = {
@@ -127,6 +110,51 @@ router.post("/authentication", async (req, res) => {
     res.send("Post crated!");
   }
   res.end();
+});
+// * PUT
+router.put("/posts/:id", async (req, res) => {
+  Posts.findByIdAndUpdate({ _id: new ObjectId(req.params.id) }, req.body)
+    .then(() =>
+      Posts.findOne({ _id: req.params.id }).then((updatedData) => {
+        res.send(updatedData);
+      })
+    )
+    .catch((err) => {
+      res.status(500).json({ error: "Could not update the document" });
+    });
+});
+// * DELETE
+router.delete("/posts/:id", async (req, res) => {
+  Posts.findByIdAndDelete({ _id: new ObjectId(req.params.id) })
+    .then(() => {
+      Posts.deleteOne({ _id: req.params.id }).then((deletedData) => {
+        res.send(deletedData);
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Could not delete the document" });
+    });
+});
+
+// ! RECORD TYPES DB
+// * GET
+router.get("/record-types", async (req, res) => {
+  const recordData = await Records.find({}).exec();
+
+  if (recordData) {
+    res.send(JSON.stringify(recordData));
+  }
+});
+// * POST
+router.post("/record-types", async (req, res) => {
+  const { title, value } = req.body;
+
+  const recordData = {
+    title: title,
+    value: value,
+  };
+  const newRecordType = new Records(recordData);
+  const saveRecord = await newRecordType.save();
 });
 
 module.exports = router;

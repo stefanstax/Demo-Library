@@ -12,6 +12,7 @@ const LibraryProvider = ({ children }) => {
     const [podcastCategories, setPodcastCategories] = useState([]);
     const [movieCategories, setMovieCategories] = useState([]);
     const [songCategories, setSongCategories] = useState([]);
+    const [recordTypes, setRecordTypes] = useState([]);
 
     const fetchPosts = useCallback(async () => {
         const response = await axios.get(`${gatewayURL}/posts`);
@@ -41,6 +42,11 @@ const LibraryProvider = ({ children }) => {
     const fetchMovieCategories = useCallback(async () => {
         const response = await axios.get(`${gatewayURL}/movie-categories`);
         setMovieCategories(response?.data);
+    });
+
+    const fetchRecordTypes = useCallback(async () => {
+        const response = await axios.get(`${gatewayURL}/record-types`);
+        setRecordTypes(response?.data);
     });
 
     const createPost = async (
@@ -88,6 +94,15 @@ const LibraryProvider = ({ children }) => {
 
         const newMovieCategories = [...movieCategories, response.data];
         setMovieCategories(newMovieCategories);
+    };
+
+    const createRecordType = async (title, value) => {
+        const response = await axios.post(`${gatewayURL}/record-types`, {
+            title: title,
+            value: value,
+        });
+        const newRecordTypes = [...recordTypes, response.data];
+        setRecordTypes(newRecordTypes);
     };
 
     const editPost = async (
@@ -153,8 +168,10 @@ const LibraryProvider = ({ children }) => {
         podcastCategories,
         movieCategories,
         songCategories,
+        recordTypes,
 
         fetchComments,
+        fetchRecordTypes,
         fetchPosts,
         fetchMembers,
         fetchPodcastCategories,
@@ -164,6 +181,7 @@ const LibraryProvider = ({ children }) => {
         createMovieCategory,
         createPodcastCategory,
         createSongCategory,
+        createRecordType,
         createPost,
         createUser,
 

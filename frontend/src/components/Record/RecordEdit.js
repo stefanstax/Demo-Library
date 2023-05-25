@@ -10,6 +10,8 @@ const RecordEdit = ({ post, onSave }) => {
         fetchSongCategories,
         movieCategories,
         fetchMovieCategories,
+        podcastCategories,
+        fetchPodcastCategories,
         editPost,
     } = useLibraryContext();
     const {
@@ -27,8 +29,13 @@ const RecordEdit = ({ post, onSave }) => {
     });
 
     useEffect(() => {
-        fetchMovieCategories();
-        fetchSongCategories();
+        if (post?.recordType === "movie") {
+            fetchMovieCategories();
+        } else if (post?.recordType === "song") {
+            fetchSongCategories();
+        } else if (post?.recordType === "podcast") {
+            fetchPodcastCategories();
+        }
     }, []);
 
     const onSubmit = (data) => {
@@ -52,6 +59,12 @@ const RecordEdit = ({ post, onSave }) => {
         </MenuItem>
     ));
     const movies = movieCategories.map((category) => (
+        <MenuItem key={category.value} value={category.value}>
+            {category.title}
+        </MenuItem>
+    ));
+
+    const podcasts = podcastCategories.map((category) => (
         <MenuItem key={category.value} value={category.value}>
             {category.title}
         </MenuItem>
@@ -93,7 +106,7 @@ const RecordEdit = ({ post, onSave }) => {
                 >
                     {post?.recordType === "movie"
                         ? "Producer(s) "
-                        : "Author(s)    "}
+                        : "Author(s) "}
                     name is required
                 </p>
             )}
@@ -103,7 +116,12 @@ const RecordEdit = ({ post, onSave }) => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                    <TextField label="Title" fullWidth {...field} />
+                    <TextField
+                        label="Title"
+                        fullWidth
+                        fontColor="#f9f9f9"
+                        {...field}
+                    />
                 )}
             />
             {errors.title?.type === "required" && (
@@ -126,7 +144,11 @@ const RecordEdit = ({ post, onSave }) => {
                         fullWidth
                         {...field}
                     >
-                        {post?.recordType === "movie" ? movies : songs}
+                        {post?.recordType === "movie"
+                            ? movies
+                            : post?.recordType === "song"
+                            ? songs
+                            : podcasts}
                     </Select>
                 )}
             />

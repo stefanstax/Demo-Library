@@ -28,18 +28,9 @@ const Photo = ({ post }) => {
         <>
             <img
                 src={response?.photos[0]?.src?.medium}
-                className="w-full object-fit object-cover h-[150px] rounded-t relative"
+                className="w-full max-w-[150px] mx-auto rounded object-fit mt-4 drop-shadow-2xl object-cover h-[150px] rounded-t relative"
                 alt=""
             />
-            <Box className="absolute w-fit px-2 flex gap-[10px] justify-center items-center bg-red-500 text-white drop-shadow-xl rounded-br">
-                <Typography
-                    variant="span"
-                    className="text-[12px] flex gap-[10px] justify-center items-center p-1"
-                >
-                    ID: {post._id}
-                    <RecordDelete post={post} />
-                </Typography>
-            </Box>
         </>
     );
 };

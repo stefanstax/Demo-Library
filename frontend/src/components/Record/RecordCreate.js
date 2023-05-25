@@ -1,29 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import useLibraryContext from "../../hooks/use-library-context";
-import { recordtypes } from "../../context/recordtypes";
 import RecordType from "./RecordType";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
 import CreatePodcast from "../../pages/Podcast/CreatePodcast";
 import CreateSong from "../../pages/Songs/CreateSong";
 import CreateMovie from "../../pages/Movies/CreateMovie";
 
 const RecordCreate = () => {
-    const { createPost } = useLibraryContext();
+    const { createPost, recordTypes, fetchRecordTypes } = useLibraryContext();
     const [recordType, setRecordType] = useState("");
     const [isCreate, setIsCreate] = useState(false);
-
     const handleRecordType = (recordType) => {
         setRecordType(recordType);
     };
+
+    useEffect(() => {
+        fetchRecordTypes();
+    }, []);
 
     return (
         <Grid
             item
             xs={12}
-            md={4}
-            lg={3}
-            className="flex justify-center items-center bg-[#C7F86080] hover:bg-[#C7F860] transition-all rounded-[7.5px] drop-shadow-2xl p-4 min-h-[200px] cursor-pointer"
+            md={3}
+            lg={2}
+            className="flex justify-center items-center bg-[#303030] hover:bg-[#212121] transition-all rounded-[7.5px] drop-shadow-2xl text-white p-4 min-h-[200px] cursor-pointer"
             onClick={() => setIsCreate(true)}
         >
             {isCreate ? (
@@ -32,7 +34,7 @@ const RecordCreate = () => {
                     className="flex justify-center items-center flex-col gap-[10px] w-full"
                 >
                     <RecordType
-                        recordtypes={recordtypes}
+                        recordtypes={recordTypes}
                         onSelect={handleRecordType}
                     />
 
@@ -45,6 +47,9 @@ const RecordCreate = () => {
                     )}
                     {recordType === "podcast" && (
                         <CreatePodcast createPost={createPost} />
+                    )}
+                    {recordType === "series" && (
+                        <Typography component="h4">Coming soon!</Typography>
                     )}
                 </Box>
             ) : (

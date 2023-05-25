@@ -3,8 +3,8 @@ import { Controller, useForm } from "react-hook-form";
 import classNames from "classnames";
 import useLibraryContext from "../hooks/use-library-context";
 
-const CreatePodcastGenre = () => {
-    const { createPodcastCategory } = useLibraryContext();
+const CreateRecordType = () => {
+    const { createRecordType } = useLibraryContext();
     const {
         handleSubmit,
         control,
@@ -17,8 +17,8 @@ const CreatePodcastGenre = () => {
         },
     });
 
-    const onSubmitPodcast = (data) => {
-        createPodcastCategory(data.title, data.value);
+    const onSubmitRecordType = (data) => {
+        createRecordType(data.title, data.value);
         // Reset Form
         reset();
     };
@@ -40,10 +40,10 @@ const CreatePodcastGenre = () => {
                 my={2}
                 color={"white"}
             >
-                Create a new podcast category
+                Create a new record type
             </Typography>
             <form
-                onSubmit={handleSubmit(onSubmitPodcast)}
+                onSubmit={handleSubmit(onSubmitRecordType)}
                 className="flex flex-wrap gap-[10px] justify-center items-center"
             >
                 <Controller
@@ -64,7 +64,7 @@ const CreatePodcastGenre = () => {
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Category title is required
+                        Record type title is required
                     </p>
                 )}
                 <Controller
@@ -85,7 +85,7 @@ const CreatePodcastGenre = () => {
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Category value is required
+                        Record type value is required
                     </p>
                 )}
                 <input type="submit" className={submitButtonClasses} />
@@ -94,4 +94,4 @@ const CreatePodcastGenre = () => {
     );
 };
 
-export default CreatePodcastGenre;
+export default CreateRecordType;

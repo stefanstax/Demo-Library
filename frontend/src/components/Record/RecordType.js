@@ -1,9 +1,17 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import useLibraryContext from "../../hooks/use-library-context";
+import { useEffect } from "react";
 
-const RecordType = ({ onSelect, recordtypes, recordType }) => {
-    const renderRecordTypes = recordtypes.map((recordType) => (
+const RecordType = ({ onSelect }) => {
+    const { recordTypes, fetchRecordTypes } = useLibraryContext();
+
+    useEffect(() => {
+        fetchRecordTypes();
+    }, []);
+
+    const renderRecordTypes = recordTypes.map((recordType) => (
         <MenuItem key={recordType.value} value={recordType.value}>
-            {recordType.label}
+            {recordType.title}
         </MenuItem>
     ));
 

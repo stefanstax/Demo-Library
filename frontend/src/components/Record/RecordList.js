@@ -2,24 +2,17 @@ import React, { useEffect } from "react";
 import useLibraryContext from "../../hooks/use-library-context";
 import PostShow from "./RecordShow";
 import PostCreate from "./RecordCreate";
-import CommentList from "../Comments/CommentList";
 import { Typography, Grid } from "@mui/material";
 
 const RecordList = () => {
-    const { fetchPosts, posts, comments } = useLibraryContext();
+    const { fetchPosts, posts } = useLibraryContext();
 
     useEffect(() => {
         fetchPosts();
     }, []);
 
     const displayPosts = posts.map((post) => {
-        const filteredComments = comments.filter(
-            (comment) => comment.postId === post.id
-        );
-
-        return (
-            <PostShow post={post} comments={filteredComments} key={post.id} />
-        );
+        return <PostShow post={post} key={post.id} />;
     });
 
     return (
@@ -29,19 +22,16 @@ const RecordList = () => {
                 component="h1"
                 fontSize={60}
                 fontWeight={900}
+                color={"white"}
                 textTransform={"uppercase"}
                 className="underline"
                 mb={8}
             >
                 List of all records
             </Typography>
-            <Grid container gap={5}>
+            <Grid container gap={5} className="flex justify-start items-start">
                 {displayPosts}
                 <PostCreate />
-                <Typography variant="h4" className="w-full font-black text-2xl">
-                    Comments
-                </Typography>
-                <CommentList />
             </Grid>
         </>
     );

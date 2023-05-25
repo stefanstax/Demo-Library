@@ -27,7 +27,7 @@ const CreateMovieGenre = () => {
 
     const submitButtonClasses = classNames(
         formInvalid?.length ? `opacity-50 cursor-not-allow` : `cursor-pointer`,
-        `w-full border border-[1px] border-[#171717] p-3 rounded hover:bg-[#171717] hover:text-white transition-all`
+        `w-full border border-[1px] text-white uppercase font-black border-[#C7F860] p-3 rounded hover:bg-[#C7F860] hover:text-black transition-all`
     );
 
     return (
@@ -38,6 +38,7 @@ const CreateMovieGenre = () => {
                 fontWeight={900}
                 textTransform={"uppercase"}
                 my={2}
+                color={"white"}
             >
                 Create a new movie category
             </Typography>

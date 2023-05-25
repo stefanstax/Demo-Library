@@ -19,6 +19,7 @@ const MoviesPage = () => {
                 textTransform={"uppercase"}
                 className="underline"
                 mb={8}
+                color={"white"}
             >
                 List of all songs
             </Typography>
