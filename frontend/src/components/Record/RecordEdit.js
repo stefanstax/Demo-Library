@@ -1,11 +1,17 @@
-import useLibraryContext from '../../hooks/use-library-context';
-import { categories } from '../../context/categories';
-import { genres } from '../../context/genres';
-import { TextField, Input, MenuItem, Select } from '@mui/material';
-import { useForm, Controller } from 'react-hook-form';
-import classNames from 'classnames';
+import useLibraryContext from "../../hooks/use-library-context";
+import { TextField, MenuItem, Select } from "@mui/material";
+import { useForm, Controller } from "react-hook-form";
+import classNames from "classnames";
+import { useEffect } from "react";
 
 const RecordEdit = ({ post, onSave }) => {
+    const {
+        songCategories,
+        fetchSongCategories,
+        movieCategories,
+        fetchMovieCategories,
+        editPost,
+    } = useLibraryContext();
     const {
         control,
         handleSubmit,
@@ -19,10 +25,20 @@ const RecordEdit = ({ post, onSave }) => {
             recordType: post?.recordType,
         },
     });
-    const { editPost } = useLibraryContext();
+
+    useEffect(() => {
+        fetchMovieCategories();
+        fetchSongCategories();
+    }, []);
 
     const onSubmit = (data) => {
-        editPost(post.id, data.title, data.genre, data.recordType, data.author);
+        editPost(
+            post?._id,
+            data.title,
+            data.genre,
+            data.recordType,
+            data.author
+        );
         onSave();
     };
 
@@ -30,14 +46,14 @@ const RecordEdit = ({ post, onSave }) => {
     // const handleCategory = (value) => {
     //     setCategory(value);
     // };
-    const songs = genres.map((genre) => (
+    const songs = songCategories.map((genre) => (
         <MenuItem key={genre.value} value={genre.value}>
-            {genre.label}
+            {genre.title}
         </MenuItem>
     ));
-    const movies = categories.map((category) => (
+    const movies = movieCategories.map((category) => (
         <MenuItem key={category.value} value={category.value}>
-            {category.label}
+            {category.title}
         </MenuItem>
     ));
 
@@ -61,23 +77,23 @@ const RecordEdit = ({ post, onSave }) => {
                 render={({ field }) => (
                     <TextField
                         label={
-                            post?.recordType === 'movie'
-                                ? 'Producer(s)'
-                                : 'Author(s)'
+                            post?.recordType === "movie"
+                                ? "Producer(s)"
+                                : "Author(s)"
                         }
                         fullWidth
                         {...field}
                     />
                 )}
             />
-            {errors.author?.type === 'required' && (
+            {errors.author?.type === "required" && (
                 <p
                     className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                     role="alert"
                 >
-                    {post?.recordType === 'movie'
-                        ? 'Producer(s) '
-                        : 'Author(s)    '}
+                    {post?.recordType === "movie"
+                        ? "Producer(s) "
+                        : "Author(s)    "}
                     name is required
                 </p>
             )}
@@ -90,7 +106,7 @@ const RecordEdit = ({ post, onSave }) => {
                     <TextField label="Title" fullWidth {...field} />
                 )}
             />
-            {errors.title?.type === 'required' && (
+            {errors.title?.type === "required" && (
                 <p
                     className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                     role="alert"
@@ -110,19 +126,19 @@ const RecordEdit = ({ post, onSave }) => {
                         fullWidth
                         {...field}
                     >
-                        {post?.recordType === 'movie' ? movies : songs}
+                        {post?.recordType === "movie" ? movies : songs}
                     </Select>
                 )}
             />
-            {errors.genre?.type === 'required' && (
+            {errors.genre?.type === "required" && (
                 <p
                     className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                     role="alert"
                 >
-                    Please select{' '}
-                    {post?.recordType === 'movie'
-                        ? 'movie category'
-                        : 'song genre'}
+                    Please select{" "}
+                    {post?.recordType === "movie"
+                        ? "movie category"
+                        : "song genre"}
                 </p>
             )}
             <input type="submit" className={submitButtonClasses} />

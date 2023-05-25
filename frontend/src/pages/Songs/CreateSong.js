@@ -1,9 +1,11 @@
 import { TextField, Typography, MenuItem, Select } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
-import { genres } from "../../context/genres";
 import classNames from "classnames";
+import useLibraryContext from "../../hooks/use-library-context";
+import { useEffect } from "react";
 
 const CreateSong = ({ createPost }) => {
+    const { songCategories, fetchSongCategories } = useLibraryContext();
     const {
         handleSubmit,
         control,
@@ -18,15 +20,19 @@ const CreateSong = ({ createPost }) => {
         },
     });
 
+    useEffect(() => {
+        fetchSongCategories();
+    }, []);
+
     const onSubmit = (data) => {
         createPost(data.title, data.genre, data.recordType, data.author);
         // Reset Form
         reset();
     };
 
-    const options = genres.map((genre) => (
+    const options = songCategories.map((genre) => (
         <MenuItem key={genre.value} value={genre.value}>
-            {genre.label}
+            {genre.title}
         </MenuItem>
     ));
 

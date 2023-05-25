@@ -29,6 +29,11 @@ const moviesSchema = new Schema({
   },
 });
 
+const songsSchema = new Schema({
+  title: { type: String, required: true },
+  value: { type: String, required: true },
+});
+
 const Posts = mongoose.model("Posts", postSchema, "posts");
 const Register = mongoose.model("Register", registerSchema, "authentication");
 const Podcasts = mongoose.model(
@@ -37,6 +42,7 @@ const Podcasts = mongoose.model(
   "podcast-categories"
 );
 const Movies = mongoose.model("Movies", moviesSchema, "movie-categories");
+const Songs = mongoose.model("Songs", songsSchema, "song-categories");
 // prettier-ignore
-const mySchemas = { "Register": Register, "Posts": Posts, "Podcasts": Podcasts, "Movies": Movies };
+const mySchemas = { "Register": Register, "Posts": Posts, "Podcasts": Podcasts, "Movies": Movies, "Songs": Songs };
 module.exports = mySchemas;

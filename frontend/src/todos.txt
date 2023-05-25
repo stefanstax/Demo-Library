@@ -9,7 +9,7 @@
     - Create through mongo db ✅
     - Get through mongo db ✅
     - Edit through mongo db ⏲️
-    - Delete through mongo db ⏲️
+    - Delete through mongo db ✅
 - Upon submitting comment clear field; ⏲️
 - Upon creation close previously selected record type; ⏲️
 - Draw a wire frame 🗺️
@@ -17,7 +17,7 @@
 - Compress errors messages from fields ⏲️
 - Project de-cluter and proper file structure ⏲️
 - Add log in Auth ⏲️
-    - Add Song genres through API ⏲️
+    - Add Song genres through API ✅
     - Add Movie genres through API ✅
     - Add Podcast genres through API ✅
     - Add Paths through API ⏲️

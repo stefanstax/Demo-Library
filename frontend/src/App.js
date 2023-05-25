@@ -10,6 +10,7 @@ import PodcastPage from "./pages/Podcast/PodcastPage";
 import CreateRecordGenre from "./components/CreatePodcastGenre";
 import CreateMovieGenre from "./components/CreateMovieGenre";
 import CreatePodcastGenre from "./components/CreatePodcastGenre";
+import CreateSongGenre from "./components/CreateSongGenre";
 
 const App = () => {
     return (
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/genres">
                 <CreatePodcastGenre />
                 <CreateMovieGenre />
+                <CreateSongGenre />
             </Route>
         </Container>
     );

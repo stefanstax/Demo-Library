@@ -1,11 +1,10 @@
-import { useEffect } from "react";
-import { TextField, Typography, MenuItem, Select } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import classNames from "classnames";
-import useLibraryContext from "../../hooks/use-library-context";
+import useLibraryContext from "../hooks/use-library-context";
 
-const CreatePodcast = ({ createPost }) => {
-    const { podcastCategories, fetchPodcastCategories } = useLibraryContext();
+const CreateSongGenre = () => {
+    const { createSongCategory } = useLibraryContext();
     const {
         handleSubmit,
         control,
@@ -13,28 +12,16 @@ const CreatePodcast = ({ createPost }) => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            author: "",
             title: "",
-            genre: "",
-            recordType: "podcast",
+            value: "",
         },
     });
 
-    useEffect(() => {
-        fetchPodcastCategories();
-    }, []);
-
-    const onSubmit = (data) => {
-        createPost(data.title, data.genre, data.recordType, data.author);
+    const onSubmitSong = (data) => {
+        createSongCategory(data.title, data.value);
         // Reset Form
         reset();
     };
-
-    const options = podcastCategories.map((category) => (
-        <MenuItem key={category.value} value={category.value}>
-            {category.title}
-        </MenuItem>
-    ));
 
     const formInvalid = Object.keys(errors);
 
@@ -52,40 +39,23 @@ const CreatePodcast = ({ createPost }) => {
                 textTransform={"uppercase"}
                 my={2}
             >
-                Create a new Podcast
+                Create a new song category
             </Typography>
             <form
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit(onSubmitSong)}
                 className="flex flex-wrap gap-[10px] justify-center items-center"
             >
-                <Controller
-                    name="author"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                        <TextField
-                            label="Producer(s)"
-                            aria-invalid={errors.author ? "true" : "false"}
-                            fullWidth
-                            {...field}
-                        />
-                    )}
-                />
-                {errors.author?.type === "required" && (
-                    <p
-                        className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
-                        role="alert"
-                    >
-                        Producer name is required
-                    </p>
-                )}
-
                 <Controller
                     name="title"
                     control={control}
                     rules={{ required: true }}
                     render={({ field }) => (
-                        <TextField label="Title" fullWidth {...field} />
+                        <TextField
+                            label="Title"
+                            aria-invalid={errors.title ? "true" : "false"}
+                            fullWidth
+                            {...field}
+                        />
                     )}
                 />
                 {errors.title?.type === "required" && (
@@ -93,26 +63,28 @@ const CreatePodcast = ({ createPost }) => {
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Podcast title name is required
+                        Category title is required
                     </p>
                 )}
-
                 <Controller
-                    name="genre"
+                    name="value"
                     control={control}
                     rules={{ required: true }}
                     render={({ field }) => (
-                        <Select label="Genre" fullWidth {...field}>
-                            {options}
-                        </Select>
+                        <TextField
+                            label="Value"
+                            aria-invalid={errors.value ? "true" : "false"}
+                            fullWidth
+                            {...field}
+                        />
                     )}
                 />
-                {errors.genre?.type === "required" && (
+                {errors.value?.type === "required" && (
                     <p
                         className="bg-red-500 w-full text-red-200 p-1 rounded text-center"
                         role="alert"
                     >
-                        Please select Podcast genre
+                        Category value is required
                     </p>
                 )}
                 <input type="submit" className={submitButtonClasses} />
@@ -121,4 +93,4 @@ const CreatePodcast = ({ createPost }) => {
     );
 };
 
-export default CreatePodcast;
+export default CreateSongGenre;

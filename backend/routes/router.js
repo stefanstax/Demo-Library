@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const schemas = require("../models/schemas");
+const { ObjectId } = require("mongodb");
 
 // Post to db for Posts
 router.post("/posts", async (req, res) => {
@@ -40,6 +41,26 @@ router.get("/podcast-categories", async (req, res) => {
   }
 });
 
+router.post("/song-categories", async (req, res) => {
+  const { title, value } = req.body;
+  const recordData = {
+    title: title,
+    value: value,
+  };
+  const newSongCategory = new schemas.Songs(recordData);
+  await newSongCategory.save();
+  res.end();
+});
+
+router.get("/song-categories", async (req, res) => {
+  const songCategories = schemas.Songs;
+  const recordData = await songCategories.find({}).exec();
+
+  if (recordData) {
+    res.send(JSON.stringify(recordData));
+  }
+});
+
 router.post("/movie-categories", async (req, res) => {
   const { title, value } = req.body;
 
@@ -63,17 +84,23 @@ router.get("/movie-categories", async (req, res) => {
 });
 
 router.delete("/posts/:id", async (req, res) => {
-  if (ObjectId.isValid(req.params.id)) {
-    schemas.Posts.deleteOne({ _id: ObjectId(req.params.id) })
-      .then((result) => {
-        res.status(200).json(result);
-      })
-      .catch((err) => {
-        res.status(500).json({ error: "Could not delete the document" });
-      });
-  } else {
-    res.status(500).json({ error: "Not a valid post id" });
-  }
+  schemas.Posts.deleteOne({ _id: new ObjectId(req.params.id) })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Could not delete the document" });
+    });
+});
+
+router.put("/posts/:id", async (req, res) => {
+  schemas.Posts.updateOne({ _id: new ObjectId(req.params.id) })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Could not update the document" });
+    });
 });
 
 // Get all posts from db
